@@ -25,7 +25,7 @@ This repository will be continuously updated as the course will go on.
 
 First, create an new directory, say, HW_680 in the Google Drive. Now, download all the files from [here](https://drive.google.com/drive/folders/1EukZxXlbvCAKh_HapVIGaFWNbEYb4xP8?usp=sharing) and upload it to the newly created folder HW_680 created in your Google Drive. 
 
-After the upload is computed, open the notebook 680_hw.ipynb in Google Colab.
+After the upload is computed, open the notebook **680_hw_colab.ipynb** in Google Colab.
 
 After running the below two lines:
 
