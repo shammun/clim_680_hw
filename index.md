@@ -361,7 +361,7 @@ We see that it changed over time but it is not clear whether it has a consistent
 Now, let's have a look at standard deviation of temperature over Asia to see how it varies in different areas of Asia.
 
 <!-- Toggle Button for Image 5 -->
-<button onclick="toggleVisibility('image5', 'code5')" style="...">
+<button onclick="toggleVisibility('image5', 'code5')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
@@ -441,7 +441,7 @@ We can see that standard deviation of temperature varies over Asia. Although it 
 Now, let's have a look at the climatology of temperature in Asia [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW2_New.ipynb).
 
 <!-- Toggle Button for Image 1 -->
-<button onclick="toggleVisibility('image6', 'code6')" style="...">
+<button onclick="toggleVisibility('image6', 'code6')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
@@ -542,7 +542,7 @@ Please go to this notebook to find step by step instruction on doing the above s
 Below is the time series plot of DMI along with temperature anomalies in eastern and western boxes or regions. If you click on the button, you will see from the very start how to use Python to calculate these anomalies for these two regions, how to calculate DMI and finally how to plot them.  
 
 <!-- Toggle Button for Image 1 -->
-<button onclick="toggleVisibility('image7', 'code7')" style="...">
+<button onclick="toggleVisibility('image7', 'code7')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
@@ -628,7 +628,7 @@ Now, DMI value of more than or equal to + 0.4 is defined as positive IOD and neg
 Now, using this definition, we can calculate all these phases of IOD. Below, you can see an animation of time evolution of IOD (DMI) over time according to its different phases. Again, all the codes can be seen clicking on the button below or by going to the [notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button -->
-<button onclick="toggleVideoAndCode('video1', 'codeForVideo1')">Toggle between video and code</button>
+<button onclick="toggleVideoAndCode('video1', 'codeForVideo1')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">Toggle between video and code</button>
 
 <!-- Video -->
 <video id="video1" width="820" height="640" controls style="display:block;">
@@ -753,7 +753,7 @@ Now, we will look at temperature anomalies for different phases of IOD that we j
 From the figure below, we can see that China has negative temperature anomaly when the IOD is positive and positive temperature anomaly when the IOD is negative. We can also observe that in Kazakhstan, there is positive response to temperature that is with the increase of IOD or SST, the temperature (anomaly) increases and with decreasing SST, temperature there decreases.
 
 <!-- Toggle Button for Image 8 -->
-<button onclick="toggleVisibility('image8', 'code8')" style="...">
+<button onclick="toggleVisibility('image8', 'code8')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
@@ -852,7 +852,7 @@ plt.show()
 For convenience, we can also look at how different is positive or negative phase compared to neutral phase for temperature. This is also in accordance with the composite plot we have just seen.
 
 <!-- Toggle Button for Image 9 -->
-<button onclick="toggleVisibility('image9', 'code9')" style="...">
+<button onclick="toggleVisibility('image9', 'code9')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
@@ -949,7 +949,7 @@ We will test the hypothesis using a two-sided test, based on the Student's t-Tes
 The following plot (and the accompanying code) shows the locations where the value of t-Test is statistically significant or where P-value is less than 0.05.
 
 <!-- Toggle Button for Image 10 -->
-<button onclick="toggleVisibility('image10', 'code10')" style="...">
+<button onclick="toggleVisibility('image10', 'code10')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
@@ -1044,7 +1044,7 @@ plt.savefig('stats_ttest.png')
 For all the points or locations where the mean temperature during positive IOD is significantly different than neutral phase of IOD is shown with dots. Now, we will look at a single such point, here a point at 75 degree East and 22.5 degree North. We will now visually inspect how IOD and temperature anomaly at this point move together over time.
 
 <!-- Toggle Button for Image 11 -->
-<button onclick="toggleVisibility('image11', 'code11')" style="...">
+<button onclick="toggleVisibility('image11', 'code11')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
@@ -1078,7 +1078,7 @@ plt.show()
 Now, we will look at the correlation between DMI (IOD) and temperature anomalies over Asia. Look at the code below [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb):
 
 <!-- Toggle Button for Image 12 -->
-<button onclick="toggleVisibility('image12', 'code12')" style="...">
+<button onclick="toggleVisibility('image12', 'code12')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
@@ -1173,7 +1173,7 @@ From the above map, we can see that Northeast and Northwest of China, south of I
 Now, we can check the statistical significance of this correlation.
 
 <!-- Toggle Button for Image 13 -->
-<button onclick="toggleVisibility('image13', 'code13')" style="...">
+<button onclick="toggleVisibility('image13', 'code13')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
@@ -1303,7 +1303,7 @@ We see that in southern India, Kazakhstan, south-eastern and south-western part 
 In this part, I will take temperature anomaly over Asia is explained by IOD. So, we will regress DMI Index on temperature anomaly and see if the variation in temperature anomaly can be explained by DMI. We will also look at which areas or countries have clear signal from DMI as indicated by statistically significant p-value or a p-value less than 0.05. We will also see if the pattern of correlation between DMI and temperature anomaly is observed for regression coefficient. It is usual to expect to have similar pattern.
 
 <!-- Toggle Button for Image 14 -->
-<button onclick="toggleVisibility('image14', 'code14')" style="...">
+<button onclick="toggleVisibility('image14', 'code14')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 
