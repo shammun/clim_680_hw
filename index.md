@@ -13,7 +13,7 @@ Description of each of your analyses along with a link to your notebook for each
 <img src="1.png" id="image1" style="display:block;" onclick="toggleVisibility('image1', 'code1')">
 
 <!-- Code Block (initially hidden) -->
-<pre id="code1" style="display:none;">
+<pre id="code1" style="display:none;" onclick="toggleVisibility('image1', 'code1')">
   <code>
     // Your code here
     import matplotlib.pyplot as plt
@@ -88,6 +88,7 @@ Provide short summary of what you learned from your analysis of your data (both 
   function toggleVisibility(imageId, codeId) {
     var image = document.getElementById(imageId);
     var code = document.getElementById(codeId);
+
     if (image.style.display === "none") {
       image.style.display = "block";
       code.style.display = "none";
@@ -97,3 +98,4 @@ Provide short summary of what you learned from your analysis of your data (both 
     }
   }
 </script>
+
