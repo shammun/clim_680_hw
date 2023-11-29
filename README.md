@@ -20,10 +20,7 @@ Interactive Notebooks
 Detailed Analysis with Python Code 🐍
 GitHub Page 📖 [Github Page](https://shammun.github.io/clim_680_hw/)
 
-<video id="video1" width="820" height="640" controls style="display:block;">
-  <source src="IOD_Animation_2_Smaller_Size.mp4" type="video/mp4">
-  Evolution of IOD Phases
-</video>
+[![Evolution of IOD](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID/0.jpg)](https://youtu.be/sH3IBlVsef0?si=_X1-tS713Kfkm09D "Evolution of IOD")
 
 ## 🚀 Getting Started
 These instructions will get you a copy of the project up and running on your local machine to be able to run the notebooks.
@@ -76,6 +73,6 @@ Project Link: [https://shammun.github.io/clim_680_hw/]
 
 ![Screenshot1](regression_temp_anom_DMI.png)
 ![Screenshot2](correlation_IOD_temp_significance.png)
-![Composite anomalies](composite_anomalies_IOD)
+![Composite anomalies](composite_anomalies_IOD.png)
 ![JJAS temperature anomaly](jjas_temperature_anomaly.gif)
 
