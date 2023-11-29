@@ -39,7 +39,7 @@ Description of each of your analyses along with a link to your notebook for each
 
 
 
-<video width="320" height="240" controls>
+<video width="820" height="640" controls>
   <source src="IOD_Animation_2_Smaller_Size.mp4" type="video/mp4">
   Evolution of IOD Phases
 </video>
