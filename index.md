@@ -364,7 +364,7 @@ Now, let's have a look at standard deviation of temperature over Asia to see how
 <img src="std_dev_temp_JJAS.png" id="image5" style="display:block;">
 
 <!-- Code Block for Image 1 (initially hidden) -->
-<pre id="code5" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code5" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
 import xarray as xr
 import matplotlib.pyplot as plt
