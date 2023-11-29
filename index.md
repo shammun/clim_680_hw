@@ -545,7 +545,7 @@ Below is the time series plot of DMI along with temperature anomalies in eastern
 <img src="DMI.png" id="image7" style="display:block;">
 
 <!-- Code Block for Image 7 (initially hidden) -->
-<pre id="code7" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code7" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
 import numpy as np
 import xarray as xr
@@ -634,7 +634,7 @@ Now, using this definition, we can calculate all these phases of IOD. Below, you
 
 
 <!-- Code Block (initially hidden) -->
-<pre id="codeForVideo1" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="codeForVideo1" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
 # Identify times when DMI is positive, when it is negative and when it is neutral
 positive_IOD = dmi.where(dmi >= 0.4, drop=True)
@@ -756,7 +756,7 @@ From the figure below, we can see that China has negative temperature anomaly wh
 <img src="composite_anomalies_IOD.png" id="image8" style="display:block;">
 
 <!-- Code Block for Image 8 (initially hidden) -->
-<pre id="code8" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code8" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
    ### Load Temperature Data
 # Load data
@@ -855,7 +855,7 @@ For convenience, we can also look at how different is positive or negative phase
 <img src="comparison_plot_IOD.png" id="image9" style="display:block;">
 
 <!-- Code Block for Image 9 (initially hidden) -->
-<pre id="code9" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code9" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
 diff_temp=[positive_IOD_temp-neutral_IOD_temp, 
              negative_IOD_temp-neutral_IOD_temp]
@@ -952,7 +952,7 @@ The following plot (and the accompanying code) shows the locations where the val
 <img src="stats_ttest.png" id="image10" style="display:block;">
 
 <!-- Code Block for Image 10 (initially hidden) -->
-<pre id="code10" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code10" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
 from scipy.stats import ttest_ind
     
@@ -1047,7 +1047,7 @@ For all the points or locations where the mean temperature during positive IOD i
 <img src="temp_DMI_movement.png" id="image11" style="display:block;">
 
 <!-- Code Block for Image 11 (initially hidden) -->
-<pre id="code11" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code11" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
     pt=ds_anoms.sel(lat=22.5,lon=75,method='nearest')
 
@@ -1176,7 +1176,7 @@ Now, we can check the statistical significance of this correlation [Notebook3](h
 <img src="correlation_IOD_temp_significance.png" id="image13" style="display:block;">
 
 <!-- Code Block for Image 13 (initially hidden) -->
-<pre id="code13" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code13" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
 import numpy as np
 from scipy.stats import pearsonr
@@ -1306,7 +1306,7 @@ In this part, I will take temperature anomaly over Asia is explained by IOD. So,
 <img src="regression_temp_anom_DMI.png" id="image14" style="display:block;">
 
 <!-- Code Block for Image 14 (initially hidden) -->
-<pre id="code14" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code14" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
 from scipy.stats import linregress
 
