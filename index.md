@@ -9,11 +9,14 @@ A description of your primary dataset and any additional datasets used (e.g. cli
 ### Code description 
 Description of each of your analyses along with a link to your notebook for each analysis. This can be in a bullet or table of contents type format.  
 
+<!-- Toggle Button -->
+<button onclick="toggleVisibility('image1', 'code1')">Toggle between image and code</button>
+
 <!-- Image -->
-<img src="1.png" id="image1" style="display:block;" onclick="toggleVisibility('image1', 'code1')">
+<img src="1.png" id="image1" style="display:block;">
 
 <!-- Code Block (initially hidden) -->
-<pre id="code1" style="display:none;" onclick="toggleVisibility('image1', 'code1')">
+<pre id="code1" style="display:none;">
   <code>
     // Your code here
     import matplotlib.pyplot as plt
@@ -98,4 +101,5 @@ Provide short summary of what you learned from your analysis of your data (both 
     }
   }
 </script>
+
 
