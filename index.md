@@ -32,11 +32,29 @@ Daily mean temperature values are provided by their AphroTemp_V1808 at 0.50 and 
    * Daily mean temperature :  -99.9
    * Ratio of 0.05 grid box containing station(s) :  -99.9
 
-#### 
+#### NOAA OI SST V2 High Resolution Dataset
 
-### Code description 
-Description of each of your analyses along with a link to your notebook for each analysis. This can be in a bullet or table of contents type format.  
+This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [this link](https://psl.noaa.gov/data/gridded/data.noaa.oisst.v2.highres.html).
 
+- Spatial and Temporal Coverage
+
+   * Daily values from 1981/09 to 2023/11
+   * 0.25 degree latitude x 0.25 degree longitude global grid (1440x720)
+   * 89.875S - 89.875N,0.125E to 359.875E
+
+- Missing Data
+   * Missing data is flagged with a value of -9.96921e+36f.
+
+### Code description or data analysis
+
+First of all, air temperature (in Celsius) is plotted over Asia using different Python libraries, including Cartopy and Matplotlib. Detailed step-by-step methods with code can be found in this [notebook](HW1_New.ipynb). But, the code for each of the figures displayed here can also be seen by clicking on the button placed above each figure. 
+
+<!-- Toggle Button -->
+<button onclick="toggleVisibility('image1', 'code1')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
+    Toggle between image and code
+</button>
+<!-- Image -->
+<img src="air_temp_1961.png" id="image1" style="display:block;">
 
 
 <video width="820" height="640" controls>
@@ -67,8 +85,7 @@ Description of each of your analyses along with a link to your notebook for each
 </button>
 
 
-<!-- Image -->
-<img src="1.png" id="image1" style="display:block;">
+
 
 <!-- Code Block (initially hidden) -->
 <pre id="code1" style="display:none;">
@@ -81,7 +98,6 @@ from cartopy.util import add_cyclic_point
 import cartopy.mpl.ticker as cticker
 import cartopy.feature as cfeature
 
-# Assuming ds_mean_1961 and ds_1961 are your data sources
 
 # Make the figure larger
 fig = plt.figure(figsize=(11, 8.5))
@@ -95,7 +111,7 @@ data = ds_mean_1961['tave']
 data, lons = add_cyclic_point(data, coord=ds_1961['lon'])
 
 # Define levels for finer intervals, ignoring NaNs
-level_interval = 2  # Change this value as needed
+level_interval = 2 
 levels = np.arange(np.nanmin(data), np.nanmax(data) + level_interval, level_interval)
 
 # Make a filled contour plot with specified levels
@@ -126,7 +142,7 @@ ax.set_extent([ds_1961['lon'].min(), ds_1961['lon'].max(), ds_1961['lat'].min(),
 plt.title("Air Temperature (Celsius) in 1961")
 
 # Create a new axes for the colorbar just below the map
-cbar_ax = fig.add_axes([0.15, 0.1, 0.7, 0.03]) # Adjust these values as needed
+cbar_ax = fig.add_axes([0.15, 0.1, 0.7, 0.03])
 cbar = plt.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='Surface Air Temperature (Celsius)')
 
 # Save and show the plot
