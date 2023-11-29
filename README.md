@@ -20,7 +20,60 @@
   * Detailed Analysis with Python Code 🐍
   * GitHub Page 📖 [Github Page](https://shammun.github.io/clim_680_hw/)
 
-## 🚀 Getting Started
+## Data 
+
+### Temperature Data -- The APHRODITE Water Resources project
+
+The APHRODITE Water Resources project is working on a series of precipitation products and this project completed its first phase in 2010 and embarked on its second phase in 2016, partnering with Hirosaki University, Kyoto University, and Chiba University. 
+
+Daily mean temperature values are provided by their AphroTemp_V1808 at 0.50 and 0.25 degree grid resolutions. These readings are produced by extrapolating information from meteorological stations dispersed throughout the targeted area. After the release of AphroTemp_V1204R1, surface data from nations including India, Bhutan, Thailand, and Myanmar was included. The accuracy of the temperature readings in South Asia in the most recent version has been improved by this inclusion, along with updated interpolation methods and climatic data. For a better understanding of this dataset, you can refer to this [documentation](http://aphrodite.st.hirosaki-u.ac.jp/product/APHRO_V1808_TEMP/AphroTemp_V1808_readme.txt) 
+
+#### The major characteristics of the dataset
+
+- Spatial and Temporal Coverage
+
+   * Spatial coverage      :  (MA) 60.0E - 150.0E, 15.0S - 55.0N
+   * Spatial resolution    :  0.5 degree and 0.25 degree latitude/longitude
+   * Temporal coverage     :  1961-2015
+   * Temporal resolution   :  Daily
+
+- Units
+   * Daily mean temperature :  degC
+
+- Missing Code
+
+   * Daily mean temperature :  -99.9
+
+### Sea Surface Temperature (SST) data -- NOAA OI SST V2 High Resolution Dataset
+
+This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [this link](https://psl.noaa.gov/data/gridded/data.noaa.oisst.v2.highres.html).
+
+- Spatial and Temporal Coverage
+
+   * Daily values from 1981/09 to 2023/11
+   * 0.25 degree latitude x 0.25 degree longitude global grid (1440x720)
+   * 89.875S - 89.875N,0.125E to 359.875E
+
+- Missing Data
+   * Missing data is flagged with a value of -9.96921e+36f.
+
+## 📊 Data Analysis 
+  First of all temperature data was plotted for Asia. Temperature anomaly was also calculated for this region and     time series plot of surface temperature was also plotted. To understand the climatology, the climatological temperature for each month was also computed and plotted for Asia. Then, we worked on SST data by NOAA and computed Dipole Mode Index (DMI) to estimate Indian Ocean Dipole (IOD) from 1982 to 2020. Then composite analysis with DMI and temperature was performed to see how temperature responds to different phases (positive, negative and neutral phases) of IOD. Temporal correlation coefficient analysis was also performed which showed some areas in Asia have strong correlation with IOD. Further, it was also investigated whether the change in temperature can be explained by IOD by setting up a linear regression by regressing temperature on IOD. It was found that for some areas it does have statistically significant regression parameter values.
+
+## Results
+
+  This project gives us some insights into the dynamics between the Indian Ocean Dipole (IOD) and temperature variations across Asia. Here are the key findings:
+
+  **Temporal Temperature Variations**: We observed temperature changes over time from 1961 and 2015. This was evident from the temperature anomaly plots and time series plots, indicating a shift in temperature patterns over the decades.
+
+  **Seasonal Analysis**: Focusing on the June to September period (JJAS), a crucial season for Asian climate, we saw an increasing trend in temperature evolution from 1961 to 2015 as found in the line chart.
+
+  **IOD's Influence on Regional Temperatures**: This project work investigated how different IOD phases - positive, negative, and neutral - impact regional temperatures. The results from composite maps and statistical tests (like t-tests) underscored the significant influence of IOD on temperature anomalies in specific Asian regions.
+
+  **Correlation and Regression Analyses**: We conducted correlation and regression analyses to quantify the relationship between IOD and temperature anomalies. The findings indicated strong correlations in certain areas, affirming the impact of IOD on regional climatic conditions. This was further reinforced by regression analyses, revealing the extent to which temperature variations could be attributed to changes in IOD. Northeast and Northwest of China, south of India, Kazakhstan, Uzbekistan, and east of Mongolia respond positively, while the Philipines, north-west part of Thailand, northern part of Vietnam, and Papua New Guinea respond negatively to IOD change or signal.
+
+
+## 🚀 Getting Started or Setting Up this Repo in Your Computer
   These instructions will get you a copy of the project up and running on your local machine to be able to run the notebooks.
 
 ## 🧰 Prerequisites
@@ -29,7 +82,7 @@
 * [Anaconda](https://www.anaconda.com/products/individual) or [Miniconda](https://docs.conda.io/en/latest/miniconda.html)
 * [Git](https://git-scm.com/downloads)
 
-## ⚙️ Installation
+## ⚙️ Installation or Working with the Code
   A step-by-step series of examples that tell you how to get a development environment running:
 
   1. 💾 Clone the Repository: 
