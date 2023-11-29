@@ -2,7 +2,7 @@
 
 ### Introduction 
 
-Due to climate variability and climate change, the world is continuously affected by different extreme events, especially associated with high temperature. Asia is affected by many calamities caused by high temperature driven events. Indian Ocean plays a critical role in the atmospheric dynamics of this region and particularly, Indian Ocean Dipole (IOD), an oscillation of temperature in Indian Ocean equivalent to ENSO in central and eastern tropical Pacific Ocean. In this project, it is investigated whether there is any relationship between different phases of IOD, which areas have these relationships and whether these are statistically significant.
+Due to climate variability and climate change, the world is continuously affected by different extreme events, especially associated with high temperature. Asia is affected by many calamities caused by high temperature driven events. Indian Ocean plays a critical role in the atmospheric dynamics of this region, particularly, Indian Ocean Dipole (IOD), an oscillation of temperature in Indian Ocean equivalent to ENSO in central and eastern tropical Pacific Ocean. In this project, it is investigated whether there is any relationship between different phases of IOD, which areas have these relationships and whether these are statistically significant.
 
 For doing this study, APHRODITE Water Resources project data for daily mean temperature is chosen as they have daily temperature data from 1962 upto 2015 in a gridded format with a high spatial resolution of 0.5 degree by 0.25 degree. For sea surface temperature, NOAA OISST V2 SST data is used as it has good spatial and temporal coverage.
 
@@ -32,7 +32,7 @@ Daily mean temperature values are provided by their AphroTemp_V1808 at 0.50 and 
    * Daily mean temperature :  -99.9
    * Ratio of 0.05 grid box containing station(s) :  -99.9
 
-#### NOAA OI SST V2 High Resolution Dataset
+##### NOAA OI SST V2 High Resolution Dataset
 
 This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [this link](https://psl.noaa.gov/data/gridded/data.noaa.oisst.v2.highres.html).
 
@@ -519,6 +519,10 @@ plt.savefig('climatological_map.png', dpi=300, bbox_inches='tight')
 plt.show()
   </code>
 </pre>
+
+#### Indian Ocean Dipole -- Sea Surface Temperature Analysis
+
+Indian Ocean Dipole (IOD) is a coupled ocean and atmosphere phenomenon in the equatorial Indian Ocean similar to ENSO that affects Indian Ocean and has three phases. It is characterized by the difference in sea surface temperature between two regions: a western pole in the Arabian Sea (western Indian Ocean) and an eastern pole in the eastern Indian Ocean south of Indonesia. During a positive phase, warm waters are brought up to the western part of the Indian Ocean and in the Eastern Indian Ocean, cold deep waters rise to the surface. This normally means higher temperature anomaly in the western area or box relative to the eastern pole or box. In the negative phase of IOD, this is reversed.
 
 
 
