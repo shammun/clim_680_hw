@@ -67,7 +67,13 @@ Now, let's see if the temperature changed in 2015 compared to 1961 by plotting t
 
 
 
-<video width="820" height="640" controls>
+
+
+<!-- Toggle Button -->
+<button onclick="toggleVideoAndCode('video1', 'codeForVideo1')">Toggle between video and code</button>
+
+<!-- Video -->
+<video id="video1" width="820" height="640" controls style="display:block;">
   <source src="IOD_Animation_2_Smaller_Size.mp4" type="video/mp4">
   Evolution of IOD Phases
 </video>
@@ -247,6 +253,99 @@ plt.show()
 
 
 
+<!-- Code Block (initially hidden) -->
+<pre id="codeForVideo1" style="display:none;">
+  <code>
+    import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.dates as mdates
+from matplotlib.animation import FuncAnimation
+
+# Make sure that the y2 values in fill_between calls don't contain NaNs. For positive_IOD and negative_IOD, replace NaNs with the respective threshold values.
+positive_IOD_filled = positive_IOD.fillna(0.4)  # Fill NaNs with the lower bound for positives
+negative_IOD_filled = negative_IOD.fillna(-0.4)  # Fill NaNs with the upper bound for negatives
+
+# Initialize the figure and axis with a specific size
+fig, ax = plt.subplots(figsize=(10, 6))
+
+# Initialize plot elements
+line, = ax.plot([], [], 'k', linewidth=0.5)
+
+# Update function for the animation
+def update(frame):
+    current_time = mdates.date2num(dmi['time'][:frame])  # Convert datetime to matplotlib format
+    current_sst = dmi['sst'][:frame]
+
+    # Update line plot
+    line.set_data(current_time, current_sst)
+
+    # Remove previous fills if they exist
+    for coll in [coll for coll in ax.collections]:
+        coll.remove()
+
+    # Add new fill areas
+    ax.fill_between(current_time, current_sst, where=(current_sst < 0.4) & (current_sst > -0.4), color='lightgreen', label='Neutral IOD')
+    ax.fill_between(current_time, 0.4, positive_IOD_filled[:frame], where=positive_IOD_filled[:frame] >= 0.4, color='red', label='Positive IOD', interpolate=True)
+    ax.fill_between(current_time, -0.4, negative_IOD_filled[:frame], where=negative_IOD_filled[:frame] <= -0.4, color='blue', label='Negative IOD', interpolate=True)
+
+    return line,
+
+# Set the title, labels, and legend
+ax.set_title("Indian Ocean Dipole (IOD) over Time", fontsize=14, weight='bold')
+ax.set_xlabel('Year', fontsize=12)
+ax.set_ylabel('SST Anomaly', fontsize=12)
+ax.legend(loc='best', frameon=False)
+
+# Draw the zero line and the thresholds
+ax.axhline(0, color='black', linewidth=0.5)
+ax.axhline(1, color='black', linewidth=0.5, linestyle='dotted')
+ax.axhline(-1, color='black', linewidth=0.5, linestyle='dotted')
+
+# Improve the x-axis labels with date formatting
+ax.xaxis.set_major_locator(mdates.YearLocator(5))  # Major ticks every 5 years
+ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y'))
+ax.xaxis.set_minor_locator(mdates.YearLocator(1))  # Minor ticks every year
+
+# Add gridlines
+ax.grid(which='major', linestyle='-', linewidth='0.5', color='grey')
+ax.grid(which='minor', linestyle=':', linewidth='0.5', color='grey')
+
+# Set the layout to be tight to optimize space usage
+plt.tight_layout()
+
+# Create the legend manually and place it at the top left
+legend_elements = [plt.Line2D([0], [0], color='red', lw=4, label='Positive IOD'),
+                   plt.Line2D([0], [0], color='lightgreen', lw=4, label='Neutral IOD'),
+                   plt.Line2D([0], [0], color='blue', lw=4, label='Negative IOD')]
+ax.legend(handles=legend_elements, loc='upper left')
+
+# Create the animation
+ani = FuncAnimation(fig, update, frames=len(dmi['time']), blit=True)
+
+# Add text annotations
+data_source_text = "Data Source: NOAA OI SST V2 High Resolution Dataset"
+prepared_by_text1 = "Prepared by:"
+prepared_by_text2 = "Shammunul Islam"
+
+# Position the 'Data Source' text at the bottom
+# ax.text(0.5, 0.01, data_source_text, ha='center', va='bottom', transform=fig.transFigure, fontsize=8)
+
+# Position the 'Prepared by' text, with bold and italic for the name
+# ax.text(0.5, 0.05, prepared_by_text, ha='center', va='bottom', transform=fig.transFigure, fontsize=8, style='italic')
+props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
+ax.text(0.60, 0.14, prepared_by_text1, transform=ax.transAxes, fontsize=10, 
+        verticalalignment='top')
+ax.text(0.60, 0.11, prepared_by_text2, transform=ax.transAxes, fontsize=10, 
+        verticalalignment='top', style='italic', weight = 'bold')
+ax.text(0.60, 0.08, data_source_text, transform=ax.transAxes, fontsize=8, verticalalignment='top')
+
+# Save the animation
+ani.save('IOD_timeseries_animation.gif', writer='pillow', fps=20, dpi=300)
+plt.legend()
+# Show the plot
+plt.show()
+  </code>
+</pre>
 
 
 
@@ -269,4 +368,17 @@ plt.show()
   }
 </script>
 
+<script>
+  function toggleVideoAndCode(videoId, codeId) {
+    var video = document.getElementById(videoId);
+    var code = document.getElementById(codeId);
 
+    if (video.style.display === "none") {
+      video.style.display = "block";
+      code.style.display = "none";
+    } else {
+      video.style.display = "none";
+      code.style.display = "block";
+    }
+  }
+</script>
