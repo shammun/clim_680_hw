@@ -32,13 +32,17 @@ Daily mean temperature values are provided by their AphroTemp_V1808 at 0.50 and 
    * Daily mean temperature :  -99.9
    * Ratio of 0.05 grid box containing station(s) :  -99.9
 
-
+#### 
 
 ### Code description 
 Description of each of your analyses along with a link to your notebook for each analysis. This can be in a bullet or table of contents type format.  
 
 
 
+<video width="320" height="240" controls>
+  <source src="IOD_Animation_2_Smaller_Size.mp4" type="video/mp4">
+  Evolution of IOD Phases
+</video>
 
 
 
