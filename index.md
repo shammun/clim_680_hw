@@ -1,7 +1,10 @@
 # Impact of Indian Ocean Dipole on Temperature in Asia 
 
 ### Introduction 
-The key science topic you are interested in exploring with your dataset. Describe your scientific topic and why you chose this dataset.  
+
+Due to climate variability and climate change, the world is continuously affected by different extreme events, especially associated with high temperature. Asia is affected by many calamities caused by high temperature driven events. Indian Ocean plays a critical role in the atmospheric dynamics of this region and particularly, Indian Ocean Dipole (IOD), an oscillation of temperature in Indian Ocean equivalent to ENSO in central and eastern tropical Pacific Ocean. In this project, it is investigated whether there is any relationship between different phases of IOD, which areas have these relationships and whether these are statistically significant.
+
+For doing this study, APHRODITE Water Resources project data for daily mean temperature is chosen as they have daily temperature data from 1962 upto 2015 in a gridded format with a high spatial resolution of 0.5 degree by 0.25 degree. For sea surface temperature, NOAA OISST V2 SST data is used as it has good spatial and temporal coverage.
 
 ### Data 
 A description of your primary dataset and any additional datasets used (e.g. climate indices, comparison datasets).  Should include links or paths to where the datasets are located and some information about the data original source. Should also include any unique information about your data relevant to this class (e.g. data is on an irregular grid) 
