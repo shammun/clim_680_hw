@@ -746,7 +746,7 @@ plt.show()
   </code>
 </pre>
 
-#### Calculate Composites
+##### Calculate Composites
 
 Now, we will look at temperature anomalies for different phases of IOD that we just computed. Note that, for the temperature dataset, all the time values are reported for the last day of a month while for sea surface temperature (and so for IOD), the data is reported on the first day of every month. As the time coordinates are close but not exact for temperature data and SST data (IOD phase data), we will have to use the `sel` method with the `method='nearest'` parameter to select the nearest available time points. The composite is shown below and you can find all the code for it as well.
 
@@ -935,7 +935,7 @@ plt.show()
   </code>
 </pre>
 
-#### Is the mean difference between Positive IOD and Neutral IOD significant?
+##### Is the mean difference between Positive IOD and Neutral IOD significant?
 
 Now, we will check whether the mean difference between Positive IOD and Neutral IOD is statistically significant or not. 
 
