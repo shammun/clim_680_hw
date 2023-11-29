@@ -516,7 +516,7 @@ plt.show()
 
 #### Indian Ocean Dipole -- Sea Surface Temperature Analysis
 
-Indian Ocean Dipole (IOD) is a coupled ocean and atmosphere phenomenon in the equatorial Indian Ocean similar to ENSO that affects Indian Ocean and has three phases. It is characterized by the difference in sea surface temperature between two regions: a western pole in the Arabian Sea (western Indian Ocean) and an eastern pole in the eastern Indian Ocean south of Indonesia. During a positive phase, warm waters are brought up to the western part of the Indian Ocean and in the Eastern Indian Ocean, cold deep waters rise to the surface. This normally means higher temperature anomaly in the western area or box relative to the eastern pole or box. In the negative phase of IOD, this is reversed.
+Indian Ocean Dipole (IOD) is a coupled ocean and atmosphere phenomenon in the equatorial Indian Ocean similar to ENSO that affects the Indian Ocean and has three phases. It is characterized by the difference in sea surface temperature between two regions: a western pole in the Arabian Sea (western Indian Ocean) and an eastern pole in the eastern Indian Ocean south of Indonesia. During a positive phase, warm waters are brought up to the western part of the Indian Ocean, and in the eastern Indian Ocean, cold, deep waters rise to the surface. This normally means a higher temperature anomaly in the western area or box relative to the eastern pole or box. In the negative phase of IOD, this is reversed.
 
 ##### Computing IOD using Dipole Mode Index (DMI) 
 
@@ -527,13 +527,13 @@ The Indian Ocean Dipole (IOD) phenomenon is commonly identified and measured usi
 - Arabian Sea (50°E to 70°E and 10°S to 10°N) is the western pole.
 - Eastern pole: 90°E to 110°E and 10°S to 0°S in the Eastern Indian Ocean [Source: NOAA](https://psl.noaa.gov/gcos_wgsp/Timeseries/DMI/).
 
-2. Calculate the average SST anomalies over these two regions over the time.
+2. Calculate the average SST anomalies over these two regions over time.
 
 3. Subtract the eastern region SST anomaly from the western region SST anomaly to get the DMI.
 
 Please go to this notebook to find step by step instruction on doing the above steps with codes [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb). 
 
-Below is the time series plot of DMI along with temperature anomalies in eastern and western boxes or regions. If you click on the button, you will see from the very start how to use Python to calculate these anomalies for these two regions, how to calculate DMI and finally how to plot them.  
+Below is the time series plot of DMI along with temperature anomalies in eastern and western boxes or regions. If you click on the button, you will see from the very start how to use Python to calculate these anomalies for these two regions, how to calculate DMI, and finally how to plot them.  
 
 <!-- Toggle Button for Image 1 -->
 <button onclick="toggleVisibility('image7', 'code7')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -617,9 +617,9 @@ plt.show()
   </code>
 </pre>
 
-Now, DMI value of more than or equal to + 0.4 is defined as positive IOD and negative value of -0.4 or less is defined as negative IOD (Source: [NOAA](https://www.cpc.ncep.noaa.gov/products/international/ocean_monitoring/IODMI/DMI_month.html)). The values in between -0.4 and +0.4 is defined as neutral phase of IOD. 
+Now, a DMI value of more than or equal to +0.4 is defined as a positive IOD, and a negative value of -0.4 or less is defined as a negative IOD (Source: [NOAA](https://www.cpc.ncep.noaa.gov/products/international/ocean_monitoring/IODMI/DMI_month.html)). The values between -0.4 and +0.4 are defined as the neutral phase of IOD. 
 
-Now, using this definition, we can calculate all these phases of IOD. Below, you can see an animation of time evolution of IOD (DMI) over time according to its different phases. Again, all the codes can be seen clicking on the button below or by going to the [notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+Now, using this definition, we can calculate all these phases of IOD. Below, you can see an animation of the time evolution of IOD (DMI) over time according to its different phases. Again, all the codes can be seen by clicking on the button below or by going to [notebook3] [notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button -->
 <button onclick="toggleVideoAndCode('video1', 'codeForVideo1')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">Toggle between video and code</button>
@@ -742,9 +742,9 @@ plt.show()
 
 ##### Calculate Composites
 
-Now, we will look at temperature anomalies for different phases of IOD that we just computed. Note that, for the temperature dataset, all the time values are reported for the last day of a month while for sea surface temperature (and so for IOD), the data is reported on the first day of every month. As the time coordinates are close but not exact for temperature data and SST data (IOD phase data), we will have to use the `sel` method with the `method='nearest'` parameter to select the nearest available time points. The composite is shown below and you can find all the code for it as well.
+Now, we will look at temperature anomalies for different phases of the IOD that we just computed. Note that, for the temperature dataset, all the time values are reported for the last day of a month, while for sea surface temperature (and so for IOD), the data is reported on the first day of every month. As the time coordinates are close but not exact for temperature data and SST data (IOD phase data), we will have to use the `sel` method with the `method='nearest'` parameter to select the nearest available time points. The composite is shown below, and you can find all the code for it as well.
 
-From the figure below, we can see that China has negative temperature anomaly when the IOD is positive and positive temperature anomaly when the IOD is negative. We can also observe that in Kazakhstan, there is positive response to temperature that is with the increase of IOD or SST, the temperature (anomaly) increases and with decreasing SST, temperature there decreases [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+From the figure below, we can see that China has a negative temperature anomaly when the IOD is positive and a positive temperature anomaly when the IOD is negative. We can also observe that in Kazakhstan, there is positive response to temperature, that is, with the increase of IOD or SST, the temperature (anomaly) increases and with decreasing SST, temperature decreases [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 8 -->
 <button onclick="toggleVisibility('image8', 'code8')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -938,9 +938,9 @@ Now, we will check whether the mean difference between Positive IOD and Neutral 
 **Null Hypothesis (H0)**: Differences between the mean temperature in positive IOD and the mean temperature in neutral IOD is zero
 **Alternative Hypothesis (H1)**: There is a difference between these two temperatures.
 
-We will test the hypothesis using a two-sided test, based on the Student's t-Test, for the null hypothesis that 2 independent samples have identical average (expected) values. This test assumes that the populations have identical variances by default.
+We will test the hypothesis using a two-sided test based on the Student's t-Test, for the null hypothesis that two independent samples have identical average (expected) values. This test assumes that the populations have identical variances by default.
 
-The following plot (and the accompanying code) shows the locations where the value of t-Test is statistically significant or where P-value is less than 0.05 [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+The following plot (and the accompanying code) shows the locations where the value of t-Test is statistically significant or where the P-value is less than 0.05 [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 10 -->
 <button onclick="toggleVisibility('image10', 'code10')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -1162,7 +1162,7 @@ plt.show()
   </code>
 </pre>
 
-From the above map, we can see that Northeast and Northwest of China, south of India, Kazakhstan, Uzbekistan and East of Mongolia have high positive correlation coefficient value with DMI, that means as positive anomaly increased as defined by DMI, the temperature in these areas also increased simultaneouly. Similarly, as temperature anomaly decreases or DMI increases, the temperature also decreases. We can also observe that for Philipines, and Papua New Guinea, the correlation coefficient is negative that is if IOD goes up, temperature goes down and if IOD goes down, temperature goes up in these areas.
+From the above map, we can see that the northeast and northwest of China, south of India, Kazakhstan, Uzbekistan, and east of Mongolia have a high positive correlation coefficient value with DMI, which means that as the positive anomaly increased as defined by DMI, the temperature in these areas also increased simultaneously. Similarly, as temperature anomaly decreases or DMI increases, the temperature also decreases. We can also observe that for Philipines, and Papua New Guinea, the correlation coefficient is negative, meaning that if IOD goes up, temperature goes down, and if IOD goes down, temperature goes up in these areas.
 
 Now, we can check the statistical significance of this correlation [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
@@ -1290,11 +1290,11 @@ plt.show()
   </code>
 </pre>
 
-We see that in southern India, Kazakhstan, south-eastern and south-western part of China, IOD and temperature anomalies have statistically significant positive correlation. While in Papua New Guinea and Philippines, theere is statistically significant negative correlation.
+We see that in southern India, Kazakhstan, and the south-eastern and south-western parts of China, IOD and temperature anomalies have a statistically significant positive correlation. While in Papua New Guinea and the Philippines, there is statistically significant negative correlation.
 
 #### Regression analysis
 
-In this part, I will take temperature anomaly over Asia is explained by IOD. So, we will regress DMI Index on temperature anomaly and see if the variation in temperature anomaly can be explained by DMI. We will also look at which areas or countries have clear signal from DMI as indicated by statistically significant p-value or a p-value less than 0.05. We will also see if the pattern of correlation between DMI and temperature anomaly is observed for regression coefficient. It is usual to expect to have similar pattern [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+In this part,we will examine how the temperature anomaly over Asia is explained by IOD. So, we will regress the DMI index on temperature anomalies and see if the variation in temperature anomalies can be explained by DMI. We will also look at which areas or countries have a clear signal from DMI, as indicated by a statistically significant p-value or a p-value less than 0.05. We will also see if the pattern of correlation between DMI and temperature anomalies is observed for the regression coefficient. It is usual to expect to have a similar pattern [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 14 -->
 <button onclick="toggleVisibility('image14', 'code14')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -1417,13 +1417,13 @@ cbar = plt.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='Regression
 cbar.ax.tick_params(labelsize=10)  # Adjust font size of colorbar labels
 
 # Add title to the map
-ax.set_title('Regression between DMI(IOD) and Temperature Anomalies', fontsize=14, pad=20)
+ax.set_title('Regression between DMI (IOD) and Temperature Anomalies', fontsize=14, pad=20)
 plt.savefig('regression_temp_anom_DMI.png', dpi=300, bbox_inches='tight')
 plt.show()
   </code>
 </pre>
 
-Similar to correlation sgnificance map, we can see that Northeast and Northwest of China, south of India, Kazakhstan, Uzbekistan and East of Mongolia have high positive regression coefficient, that means as DMI increases or as sea surface temperature (SST) increases, temperature in these areas also increase. Similarly, as SST decreases, temperature also decreases in these areas. We can also observe that for Philipines, north west part of Thailand, northern part of Vietnam and Papua New Guinea, the value of regression coefficient is negative and significant. For these areas, if SST goes up (positive IOD), temperature increases and likewise; if SST goes down (negative IOD), temperature goes up in these areas.
+Similar to the correlation significance map, we can see that the northeast and northwest of China, south of India, Kazakhstan, Uzbekistan, and east of Mongolia have a high positive regression coefficient, which means that as DMI increases or as sea surface temperature (SST) increases, temperature in these areas also increases. Similarly, as SST decreases, temperature also decreases in these areas. We can also observe that for the Philippines, the north-west part of Thailand, the northern part of Vietnam, and Papua New Guinea, the value of the regression coefficient is negative and significant. For these areas, if SST goes up (positive IOD), temperature increases, and likewise, if SST goes down (negative IOD), temperature goes up in these areas.
 
 ### Results 
 
@@ -1442,7 +1442,7 @@ We saw from the analysis that the Indian Ocean Dipole plays a crucial role in in
 
 I faced many challenges in dealing with these datasets because the temperature dataset and the SST dataset from NOAA uses different time index which made it challenging for me to subset by common time index (especially, when calculating composites). Further, Dask XArray was also a bit challenging as sometimes due to a lack of my klnowledge of it, my code took forever to execute. But, at the end, everything worked and I learned a lot and can't wait to move ahead and use more sophisticated statical analyses and also ML and DL models with these data to more thoroughly understand how IOD plays a role in Asia. I also plan to include atmospheric analysis or understanding of climate dynamics in this region to conduct a more thorough research coupled with quantitative analysis. 
 
-**Note: To run the notebooks, please follow the step-by-step guidelines provided in the [first page](https://github.com/shammun/clim_680_hw) of the repo or you can also look at the [README.md](https://github.com/shammun/clim_680_hw/blob/main/README.md) file. Detailed instruction on setting up with the file environment.yml is provided there**
+**Note: To run the notebooks, please follow the step-by-step guidelines provided in the [first page](https://github.com/shammun/clim_680_hw) of the repo or you can also look at the [README.md](https://github.com/shammun/clim_680_hw/blob/main/README.md) file. Detailed instruction on setting up with the file environment.yml is provided there.**
 
 <script>
   function toggleVisibility(imageId, codeId) {
