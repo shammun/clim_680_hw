@@ -365,7 +365,7 @@ Now, let's have a look at standard deviation of temperature over Asia to see how
     Toggle between image and code
 </button>
 
-<!-- Image 1 -->
+<!-- Image 5 -->
 <img src="std_dev_temp_JJAS.png" id="image5" style="display:block;">
 
 <!-- Code Block for Image 1 (initially hidden) -->
@@ -857,7 +857,7 @@ For convenience, we can also look at how different is positive or negative phase
 </button>
 
 <!-- Image 9 -->
-<img src="omparison_plot_IOD.png" id="image9" style="display:block;">
+<img src="comparison_plot_IOD.png" id="image9" style="display:block;">
 
 <!-- Code Block for Image 9 (initially hidden) -->
 <pre id="code9" style="display:none; background-color: #f7f7f7; ...">
