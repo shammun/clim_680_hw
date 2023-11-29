@@ -1431,7 +1431,7 @@ This project gives us some insights into the dynamics between the Indian Ocean D
 
 **Temporal Temperature Variations**: We observed temperature changes over time, particularly when comparing data from 1961 and 2015. This was evident from the temperature anomaly plots, indicating a shift in temperature patterns over the decades.
 
-**Seasonal Analysis**: Focusing on the June to September period, a crucial season for Asian climate, we identified trends in temperature evolution from 1961 to 2015. Our analysis showed noticeable variations, but a consistent increase or decrease in temperature was not uniformly evident across all regions.
+**Seasonal Analysis**: Focusing on the June to September period, a crucial season for Asian climate, we saw an increasing trend in temperature evolution from 1961 to 2015 as found in the line chart.
 
 **IOD's Influence on Regional Temperatures**: Our research delved into how different IOD phases - positive, negative, and neutral - impact regional temperatures. The results from composite maps and statistical tests (like t-tests) underscored the significant influence of IOD on temperature anomalies in specific Asian regions.
 
