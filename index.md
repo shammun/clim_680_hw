@@ -60,7 +60,6 @@ First of all, air temperature (in Celsius) is plotted over Asia using different 
 <!-- Code Block (initially hidden) -->
 <pre id="code1" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
-    // Your code here
 import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import numpy as np
