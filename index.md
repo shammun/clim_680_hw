@@ -48,7 +48,7 @@ This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [thi
 ### Code description or data analysis
 
 #### Temperature analysis
-First of all, air temperature (in Celsius) is plotted over Asia using different Python libraries, including Cartopy and Matplotlib. Detailed step-by-step methods with code can be found in this [notebook](https://github.com/shammun/clim_680_hw/blob/main/HW1_New.ipynb). But, the code for each of the figures displayed here can also be seen by clicking on the button placed above each figure. 
+First of all, air temperature (in Celsius) is plotted over Asia using different Python libraries, including Cartopy and Matplotlib. Detailed step-by-step methods with code can be found in this [notebook1](https://github.com/shammun/clim_680_hw/blob/main/HW1_New.ipynb). But, the code for each of the figures displayed here can also be seen by clicking on the button placed above each figure. 
 
 <!-- Toggle Button -->
 <button onclick="toggleVisibility('image1', 'code1')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -121,7 +121,7 @@ plt.show()
 </pre>
 
 
-Now, let's see if the temperature changed in 2015 compared to 1961 by plotting the temperature anomaly.
+Now, let's see if the temperature changed in 2015 compared to 1961 by plotting the temperature anomaly [notebook1](https://github.com/shammun/clim_680_hw/blob/main/HW1_New.ipynb).
 
 <button onclick="toggleVisibility('image2', 'code2')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
@@ -201,7 +201,7 @@ plt.show()
 
 ##### June, July, August, September (JJAS) temperature
 
-This is normally the summer season and here, I have investigated whether temperature increased in Asia in this season. Let's look at the temperature evolution over the period from 1961 to 2015.
+This is normally the summer season and here, I have investigated whether temperature increased in Asia in this season. Let's look at the temperature evolution over the period from 1961 to 2015 [notebook1](https://github.com/shammun/clim_680_hw/blob/main/HW1_New.ipynb).
 
 <button onclick="toggleVisibility('image3', 'code3')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
@@ -271,16 +271,13 @@ plt.show()
   </code>
 </pre>
 
-Now, let's have a look at JJAS temperature anomaly over this period.
+Now, let's have a look at JJAS temperature anomaly over this period [notebook1](https://github.com/shammun/clim_680_hw/blob/main/HW1_New.ipynb).
 
 <button onclick="toggleVisibility('image4', 'code4')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
 <!-- Image -->
 <img src="jjas_temperature_anomaly.gif" id="image4" style="display:block;">
-
-
-
 <pre id="code4" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
 import numpy as np
@@ -356,8 +353,7 @@ plt.show()
 
 We see that it changed over time but it is not clear whether it has a consistent increase or decrease or no change.
 
-
-Now, let's have a look at standard deviation of temperature over Asia to see how it varies in different areas of Asia.
+Now, let's have a look at standard deviation of temperature over Asia to see how it varies in different areas of Asia [notebook1](https://github.com/shammun/clim_680_hw/blob/main/HW1_New.ipynb).
 
 <!-- Toggle Button for Image 5 -->
 <button onclick="toggleVisibility('image5', 'code5')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -437,9 +433,9 @@ We can see that standard deviation of temperature varies over Asia. Although it 
 
 #### Climatology of temperature in Asia
 
-Now, let's have a look at the climatology of temperature in Asia [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW2_New.ipynb).
+Now, let's have a look at the climatology of temperature in Asia [Notebook2](https://github.com/shammun/clim_680_hw/blob/main/HW2_New.ipynb).
 
-<!-- Toggle Button for Image 1 -->
+<!-- Toggle Button for Image 6 -->
 <button onclick="toggleVisibility('image6', 'code6')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
     Toggle between image and code
 </button>
@@ -536,7 +532,7 @@ The Indian Ocean Dipole (IOD) phenomenon is commonly identified and measured usi
 
 3. Subtract the eastern region SST anomaly from the western region SST anomaly to get the DMI.
 
-Please go to this notebook to find step by step instruction on doing the above steps with codes [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb). 
+Please go to this notebook to find step by step instruction on doing the above steps with codes [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb). 
 
 Below is the time series plot of DMI along with temperature anomalies in eastern and western boxes or regions. If you click on the button, you will see from the very start how to use Python to calculate these anomalies for these two regions, how to calculate DMI and finally how to plot them.  
 
@@ -624,7 +620,7 @@ plt.show()
 
 Now, DMI value of more than or equal to + 0.4 is defined as positive IOD and negative value of -0.4 or less is defined as negative IOD (Source: [NOAA](https://www.cpc.ncep.noaa.gov/products/international/ocean_monitoring/IODMI/DMI_month.html)). The values in between -0.4 and +0.4 is defined as neutral phase of IOD. 
 
-Now, using this definition, we can calculate all these phases of IOD. Below, you can see an animation of time evolution of IOD (DMI) over time according to its different phases. Again, all the codes can be seen clicking on the button below or by going to the [notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+Now, using this definition, we can calculate all these phases of IOD. Below, you can see an animation of time evolution of IOD (DMI) over time according to its different phases. Again, all the codes can be seen clicking on the button below or by going to the [notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button -->
 <button onclick="toggleVideoAndCode('video1', 'codeForVideo1')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">Toggle between video and code</button>
@@ -749,7 +745,7 @@ plt.show()
 
 Now, we will look at temperature anomalies for different phases of IOD that we just computed. Note that, for the temperature dataset, all the time values are reported for the last day of a month while for sea surface temperature (and so for IOD), the data is reported on the first day of every month. As the time coordinates are close but not exact for temperature data and SST data (IOD phase data), we will have to use the `sel` method with the `method='nearest'` parameter to select the nearest available time points. The composite is shown below and you can find all the code for it as well.
 
-From the figure below, we can see that China has negative temperature anomaly when the IOD is positive and positive temperature anomaly when the IOD is negative. We can also observe that in Kazakhstan, there is positive response to temperature that is with the increase of IOD or SST, the temperature (anomaly) increases and with decreasing SST, temperature there decreases [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+From the figure below, we can see that China has negative temperature anomaly when the IOD is positive and positive temperature anomaly when the IOD is negative. We can also observe that in Kazakhstan, there is positive response to temperature that is with the increase of IOD or SST, the temperature (anomaly) increases and with decreasing SST, temperature there decreases [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 8 -->
 <button onclick="toggleVisibility('image8', 'code8')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -848,7 +844,7 @@ plt.show()
   </code>
 </pre>
 
-For convenience, we can also look at how different is positive or negative phase compared to neutral phase for temperature. This is also in accordance with the composite plot we have just seen [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+For convenience, we can also look at how different is positive or negative phase compared to neutral phase for temperature. This is also in accordance with the composite plot we have just seen [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 9 -->
 <button onclick="toggleVisibility('image9', 'code9')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -945,7 +941,7 @@ Now, we will check whether the mean difference between Positive IOD and Neutral 
 
 We will test the hypothesis using a two-sided test, based on the Student's t-Test, for the null hypothesis that 2 independent samples have identical average (expected) values. This test assumes that the populations have identical variances by default.
 
-The following plot (and the accompanying code) shows the locations where the value of t-Test is statistically significant or where P-value is less than 0.05 [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+The following plot (and the accompanying code) shows the locations where the value of t-Test is statistically significant or where P-value is less than 0.05 [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 10 -->
 <button onclick="toggleVisibility('image10', 'code10')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -1040,7 +1036,7 @@ plt.savefig('stats_ttest.png')
   </code>
 </pre>
 
-For all the points or locations where the mean temperature during positive IOD is significantly different than neutral phase of IOD is shown with dots. Now, we will look at a single such point, here a point at 75 degree East and 22.5 degree North. We will now visually inspect how IOD and temperature anomaly at this point move together over time [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+For all the points or locations where the mean temperature during positive IOD is significantly different than neutral phase of IOD is shown with dots. Now, we will look at a single such point, here a point at 75 degree East and 22.5 degree North. We will now visually inspect how IOD and temperature anomaly at this point move together over time [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 11 -->
 <button onclick="toggleVisibility('image11', 'code11')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -1074,7 +1070,7 @@ plt.show()
 
 #### Correlation analysis
 
-Now, we will look at the correlation between DMI (IOD) and temperature anomalies over Asia. Look at the code below [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb):
+Now, we will look at the correlation between DMI (IOD) and temperature anomalies over Asia. Look at the code below [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb):
 
 <!-- Toggle Button for Image 12 -->
 <button onclick="toggleVisibility('image12', 'code12')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -1169,7 +1165,7 @@ plt.show()
 
 From the above map, we can see that Northeast and Northwest of China, south of India, Kazakhstan, Uzbekistan and East of Mongolia have high positive correlation coefficient value with DMI, that means as positive anomaly increased as defined by DMI, the temperature in these areas also increased simultaneouly. Similarly, as temperature anomaly decreases or DMI increases, the temperature also decreases. We can also observe that for Philipines, and Papua New Guinea, the correlation coefficient is negative that is if IOD goes up, temperature goes down and if IOD goes down, temperature goes up in these areas.
 
-Now, we can check the statistical significance of this correlation [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+Now, we can check the statistical significance of this correlation [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 13 -->
 <button onclick="toggleVisibility('image13', 'code13')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -1299,7 +1295,7 @@ We see that in southern India, Kazakhstan, south-eastern and south-western part 
 
 #### Regression analysis
 
-In this part, I will take temperature anomaly over Asia is explained by IOD. So, we will regress DMI Index on temperature anomaly and see if the variation in temperature anomaly can be explained by DMI. We will also look at which areas or countries have clear signal from DMI as indicated by statistically significant p-value or a p-value less than 0.05. We will also see if the pattern of correlation between DMI and temperature anomaly is observed for regression coefficient. It is usual to expect to have similar pattern [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
+In this part, I will take temperature anomaly over Asia is explained by IOD. So, we will regress DMI Index on temperature anomaly and see if the variation in temperature anomaly can be explained by DMI. We will also look at which areas or countries have clear signal from DMI as indicated by statistically significant p-value or a p-value less than 0.05. We will also see if the pattern of correlation between DMI and temperature anomaly is observed for regression coefficient. It is usual to expect to have similar pattern [Notebook3](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 14 -->
 <button onclick="toggleVisibility('image14', 'code14')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
