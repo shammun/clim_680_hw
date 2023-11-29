@@ -1429,11 +1429,11 @@ Similar to the correlation significance map, we can see that the northeast and n
 
 This project gives us some insights into the dynamics between the Indian Ocean Dipole (IOD) and temperature variations across Asia. Here are the key findings:
 
-**Temporal Temperature Variations**: We observed temperature changes over time, particularly when comparing data from 1961 and 2015. This was evident from the temperature anomaly plots, indicating a shift in temperature patterns over the decades.
+**Temporal Temperature Variations**: We observed temperature changes over time from 1961 and 2015. This was evident from the temperature anomaly plots and time series plots, indicating a shift in temperature patterns over the decades.
 
-**Seasonal Analysis**: Focusing on the June to September period, a crucial season for Asian climate, we saw an increasing trend in temperature evolution from 1961 to 2015 as found in the line chart.
+**Seasonal Analysis**: Focusing on the June to September period (JJAS), a crucial season for Asian climate, we saw an increasing trend in temperature evolution from 1961 to 2015 as found in the line chart.
 
-**IOD's Influence on Regional Temperatures**: Our research delved into how different IOD phases - positive, negative, and neutral - impact regional temperatures. The results from composite maps and statistical tests (like t-tests) underscored the significant influence of IOD on temperature anomalies in specific Asian regions.
+**IOD's Influence on Regional Temperatures**: This project work investigated how different IOD phases - positive, negative, and neutral - impact regional temperatures. The results from composite maps and statistical tests (like t-tests) underscored the significant influence of IOD on temperature anomalies in specific Asian regions.
 
 **Correlation and Regression Analyses**: We conducted correlation and regression analyses to quantify the relationship between IOD and temperature anomalies. The findings indicated strong correlations in certain areas, affirming the impact of IOD on regional climatic conditions. This was further reinforced by regression analyses, revealing the extent to which temperature variations could be attributed to changes in IOD. Northeast and Northwest of China, south of India, Kazakhstan, Uzbekistan, and east of Mongolia respond positively, while the Philipines, north-west part of Thailand, northern part of Vietnam, and Papua New Guinea respond negatively to IOD change or signal.
 
