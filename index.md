@@ -7,10 +7,55 @@ Due to climate variability and climate change, the world is continuously affecte
 For doing this study, APHRODITE Water Resources project data for daily mean temperature is chosen as they have daily temperature data from 1962 upto 2015 in a gridded format with a high spatial resolution of 0.5 degree by 0.25 degree. For sea surface temperature, NOAA OISST V2 SST data is used as it has good spatial and temporal coverage.
 
 ### Data 
-A description of your primary dataset and any additional datasets used (e.g. climate indices, comparison datasets).  Should include links or paths to where the datasets are located and some information about the data original source. Should also include any unique information about your data relevant to this class (e.g. data is on an irregular grid) 
+
+#### Temperature Data -- The APHRODITE Water Resources project
+
+The APHRODITE Water Resources project is working on a series of precipitation products and this project completed its first phase in 2010 and embarked on its second phase in 2016, partnering with Hirosaki University, Kyoto University, and Chiba University. 
+
+Daily mean temperature values are provided by their AphroTemp_V1808 at 0.50 and 0.25 degree grid resolutions. These readings are produced by extrapolating information from meteorological stations dispersed throughout the targeted area. After the release of AphroTemp_V1204R1, surface data from nations including India, Bhutan, Thailand, and Myanmar was included. The accuracy of the temperature readings in South Asia in the most recent version has been improved by this inclusion, along with updated interpolation methods and climatic data. For a better understanding of this dataset, you can refer to this [documentation](http://aphrodite.st.hirosaki-u.ac.jp/product/APHRO_V1808_TEMP/AphroTemp_V1808_readme.txt) 
+
+##### The major characteristics of the dataset
+
+- Spatial and Temporal Coverage
+
+   * Spatial coverage      :  (MA) 60.0E - 150.0E, 15.0S - 55.0N
+   * Spatial resolution    :  0.5 degree and 0.25 degree latitude/longitude
+   * Temporal coverage     :  1961-2015
+   * Temporal resolution   :  Daily
+
+- Units
+   * Daily mean temperature :  degC
+   * Ratio of 0.05 grid box containing station(s) :  %
+
+- Missing Code
+
+   * Daily mean temperature :  -99.9
+   * Ratio of 0.05 grid box containing station(s) :  -99.9
+
+
 
 ### Code description 
 Description of each of your analyses along with a link to your notebook for each analysis. This can be in a bullet or table of contents type format.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- Toggle Button -->
 <button onclick="toggleVisibility('image1', 'code1')">Toggle between image and code</button>
