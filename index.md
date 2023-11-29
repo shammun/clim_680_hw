@@ -355,8 +355,168 @@ plt.show()
   </code>
 </pre>
 
+We see that it changed over time but it is not clear whether it has a consistent increase or decrease or no change.
 
+Now, let's have a look at standard deviation of temperature over Asia to see how it varies in different areas of Asia.
+<!-- Toggle Button for Image 5 -->
+<button onclick="toggleVisibility('image5', 'code5')" style="...">
+    Toggle between image and code
+</button>
 
+<!-- Image 1 -->
+<img src="std_dev_temp_JJAS.png" id="image5" style="display:block;">
+
+<!-- Code Block for Image 1 (initially hidden) -->
+<pre id="code5" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+import xarray as xr
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+import numpy as np
+
+# Open the dataset
+ds = xr.open_mfdataset('APHRO_MA_TAVE_025deg_V1808.*.nc')
+
+# Filter the dataset to include only June, July, August, and September
+ds_jjas = ds['tave'].sel(time=ds['tave']['time'].dt.month.isin([6, 7, 8, 9]))
+
+# Calculate the standard deviation of 'tave' for JJA across the time dimension
+tave_std_jjas = ds_jjas.std(dim='time')
+
+# Compute the standard deviation
+tave_std_jjas = tave_std_jjas.compute()
+
+# Define the figure and axis
+fig, ax = plt.subplots(figsize=(11, 8.5), subplot_kw={'projection': ccrs.PlateCarree()})
+fig.subplots_adjust(bottom=0.2, top=0.9, left=0.05, right=0.95, wspace=0.1, hspace=0.5)
+
+# Dynamically define levels based on the data
+min_val = tave_std_jjas.min()
+max_val = tave_std_jjas.max()
+levels = np.linspace(min_val, max_val, 20)  # Adjust 20 to the desired number of steps
+
+# Make a filled contour plot
+cs = ax.contourf(tave_std_jjas['lon'], tave_std_jjas['lat'], tave_std_jjas, 
+                 levels=levels, transform=ccrs.PlateCarree(), 
+                 cmap='YlOrRd', extend='both')
+
+# Add coastlines and borders
+ax.coastlines()
+ax.add_feature(cfeature.BORDERS, edgecolor='black')
+
+# Add gridlines and format them
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+ax.gridlines()
+ax.set_xticks(np.arange(np.floor(min(ds_jjas['lon'])), np.ceil(max(ds_jjas['lon'])), 15), crs=ccrs.PlateCarree())
+ax.set_yticks(np.arange(np.floor(min(ds_jjas['lat'])), np.ceil(max(ds_jjas['lat'])), 15), crs=ccrs.PlateCarree())
+ax.xaxis.set_major_formatter(plt.FuncFormatter(format_lon))
+ax.yaxis.set_major_formatter(plt.FuncFormatter(format_lat))
+
+# Add colorbar with increased size
+cbar_ax = fig.add_axes([0.15, 0.1, 0.7, 0.04])  # Adjusted y position of colorbar
+cbar = plt.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='Standard Deviation (degree Celsius)')
+cbar.ax.tick_params(labelsize=10)
+
+# Add title to the map
+ax.set_title('Standard Deviation of Temperature for JJAS', fontsize=14, pad=20)
+
+# Save and show the plot
+plt.savefig('std_dev_temp_JJAS.png', dpi=300, bbox_inches='tight')
+plt.show()
+  </code>
+</pre>
+
+We can see that standard deviation of temperature varies over Asia. Although it seems that the standard deviation increases as we south.
+
+#### Climatology of temperature in Asia
+
+Now, let's have a look at the climatology of temperature in Asia.
+
+<!-- Toggle Button for Image 1 -->
+<button onclick="toggleVisibility('image6', 'code6')" style="...">
+    Toggle between image and code
+</button>
+
+<!-- Image 6 -->
+<img src="climatological_map.png" id="image6" style="display:block;">
+
+<!-- Code Block for Image 6 (initially hidden) -->
+<pre id="code6" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+    import numpy as np
+import xarray as xr
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+
+def extract_monthly_data(filename):
+    ds = xr.open_dataset(filename)
+    monthly_data = ds['tave'].groupby('time.month').mean('time')
+    return monthly_data
+
+def plot_monthly_data(climatology, month, ax, vmin, vmax, levels):
+    lons, lats = np.meshgrid(climatology['lon'], climatology['lat'])
+    cs = ax.contourf(lons, lats, climatology.sel(month=month), levels=levels, cmap='RdBu_r', vmin=vmin, vmax=vmax, transform=ccrs.PlateCarree())
+    ax.coastlines(linewidth=0.5)
+    ax.add_feature(cfeature.BORDERS, linestyle=':', linewidth=0.5)
+    ax.set_title(month_name(month), fontsize=26)
+
+    # Set longitude labels with larger font size
+    lon_formatter = plt.FuncFormatter(lambda x, _: f"{int(x):d}°E" if x >= 0 else f"{int(-x):d}°W")
+    ax.set_xticks(np.arange(np.floor(np.min(climatology['lon'])), np.ceil(np.max(climatology['lon'])), 10), crs=ccrs.PlateCarree())
+    ax.set_xticklabels([lon_formatter(tick, None) for tick in np.arange(np.floor(np.min(climatology['lon'])), np.ceil(np.max(climatology['lon'])), 10)], fontsize=18)
+
+    # Set latitude labels with larger font size
+    lat_formatter = plt.FuncFormatter(lambda x, _: f"{int(x):d}°N" if x >= 0 else f"{int(-x):d}°S")
+    ax.set_yticks(np.arange(np.floor(np.min(climatology['lat'])), np.ceil(np.max(climatology['lat'])), 10), crs=ccrs.PlateCarree())
+    ax.set_yticklabels([lat_formatter(tick, None) for tick in np.arange(np.floor(np.min(climatology['lat'])), np.ceil(np.max(climatology['lat'])), 10)], fontsize=18)
+
+    return cs
+
+def month_name(month_num):
+    import calendar
+    return calendar.month_name[month_num]
+
+fig, axes = plt.subplots(nrows=3, ncols=4, figsize=(30, 26), subplot_kw={'projection': ccrs.PlateCarree()})
+
+all_data = []
+for year in range(1961, 2011):
+    filename = f"APHRO_MA_TAVE_025deg_V1808.{year}.nc.nc"
+    all_data.append(extract_monthly_data(filename))
+
+combined_data = xr.concat(all_data, dim='year')
+climatology = combined_data.mean(dim='year')
+
+vmax = np.abs(climatology.max())
+vmin = -vmax
+
+levels = np.linspace(vmin, vmax, 50)
+
+for month, ax in zip(range(1, 13), axes.ravel()):
+    cs = plot_monthly_data(climatology, month, ax, vmin, vmax, levels)
+
+cbar_ax = fig.add_axes([0.2, 0.05, 0.6, 0.02])
+cb = fig.colorbar(cs, cax=cbar_ax, orientation='horizontal')
+cb.ax.tick_params(labelsize=20)
+cb.set_label('Temperature (Celsius)', size=22)
+
+fig.suptitle("Climatological Map of South Asia (1961-2010)", fontsize=32, y=0.92)
+
+plt.subplots_adjust(top=0.88, hspace=0.05, wspace=0.1)
+
+plt.tight_layout(rect=[0, 0.03, 1, 0.95])
+
+plt.savefig('climatological_map.png', dpi=300, bbox_inches='tight')
+
+plt.show()
+  </code>
+</pre>
 
 
 
