@@ -73,7 +73,7 @@ This is normally the summer season and here, I have investigated whether tempera
     Toggle between image and code
 </button>
 <!-- Image -->
-<img src="average_temp_JJAS_over_years.png" id="image4" style="display:block;">
+<img src="average_temp_JJAS_over_years.png" id="image3" style="display:block;">
 
 Now, let's have a look at JJAS temperature anomaly over this period.
 
@@ -337,7 +337,7 @@ plt.show()
 
 <pre id="code4" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
-    import numpy as np
+import numpy as np
 import xarray as xr
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -419,7 +419,7 @@ plt.show()
 <!-- Code Block (initially hidden) -->
 <pre id="codeForVideo1" style="display:none;">
   <code>
-    import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.dates as mdates
 from matplotlib.animation import FuncAnimation
