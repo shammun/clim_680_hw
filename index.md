@@ -438,7 +438,7 @@ We can see that standard deviation of temperature varies over Asia. Although it 
 
 #### Climatology of temperature in Asia
 
-Now, let's have a look at the climatology of temperature in Asia.
+Now, let's have a look at the climatology of temperature in Asia [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW2_New.ipynb).
 
 <!-- Toggle Button for Image 1 -->
 <button onclick="toggleVisibility('image6', 'code6')" style="...">
@@ -524,12 +524,108 @@ plt.show()
 
 Indian Ocean Dipole (IOD) is a coupled ocean and atmosphere phenomenon in the equatorial Indian Ocean similar to ENSO that affects Indian Ocean and has three phases. It is characterized by the difference in sea surface temperature between two regions: a western pole in the Arabian Sea (western Indian Ocean) and an eastern pole in the eastern Indian Ocean south of Indonesia. During a positive phase, warm waters are brought up to the western part of the Indian Ocean and in the Eastern Indian Ocean, cold deep waters rise to the surface. This normally means higher temperature anomaly in the western area or box relative to the eastern pole or box. In the negative phase of IOD, this is reversed.
 
+##### Computing IOD using Dipole Mode Index (DMI) 
 
+The Indian Ocean Dipole (IOD) phenomenon is commonly identified and measured using the Dipole Mode Index (DMI). The general procedure to compute the DMI from sea surface temperature (SST) data is as follows:
 
+1. Choose the tropical Indian Ocean regions relevant to IOD. Usually, the regions needed to compute the IOD:
 
+- Arabian Sea (50°E to 70°E and 10°S to 10°N) is the western pole.
+- Eastern pole: 90°E to 110°E and 10°S to 0°S in the Eastern Indian Ocean [Source: NOAA](https://psl.noaa.gov/gcos_wgsp/Timeseries/DMI/).
 
+2. Calculate the average SST anomalies over these two regions over the time.
 
+3. Subtract the eastern region SST anomaly from the western region SST anomaly to get the DMI.
 
+Please go to this notebook to find step by step instruction on doing the above steps with codes [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb). 
+
+Below is the time series plot of DMI along with temperature anomalies in eastern and western boxes or regions. If you click on the button, you will see from the very start how to use Python to calculate these anomalies for these two regions, how to calculate DMI and finally how to plot them.  
+
+<!-- Toggle Button for Image 1 -->
+<button onclick="toggleVisibility('image7', 'code7')" style="...">
+    Toggle between image and code
+</button>
+
+<!-- Image 7 -->
+<img src="DMI.png" id="image7" style="display:block;">
+
+<!-- Code Block for Image 7 (initially hidden) -->
+<pre id="code7" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+import numpy as np
+import xarray as xr
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
+
+import cartopy.mpl.ticker as cticker
+from cartopy.util import add_cyclic_point
+
+obs_file = '/home/pdirmeye/classes/clim680_2022/OISSTv2/monthly/sst.mnmean.nc'
+ds_obs = xr.open_dataset(obs_file)
+
+#### Select the western box
+western_box = ds_obs.sst.sel(lon=slice(49.5,70.5), lat=slice(9.5, -9.5))
+
+#### Calculate climatology and anomalies of this western box
+climatology_west = western_box.sel(time=slice('1981', '2015')).groupby('time.month').mean('time')
+
+# calculate the SST anomalies for the entire time period
+sst_anomalies_west = western_box.groupby('time.month') - climatology_west
+
+#### Now, calculate the SST anomalies aveaged separately over these two areas or boxes or regions
+# If no NaNs are present, then calculate the mean
+if not sst_anomalies_west.isnull().any():
+    sst_anomalies_mean_west = sst_anomalies_west.mean(['lon', 'lat'])
+else:
+    print("The selection contains NaN values.")
+
+#### Select the eastern box
+# Select the data
+eastern_box = ds_obs.sst.sel(lon=slice(89.5,110.5), lat=slice(9.5, -0.5))
+
+#### Calculate climatology and anomalies of this eastern box
+climatology_east = eastern_box.sel(time=slice('1981', '2015')).groupby('time.month').mean('time')
+
+# calculate the SST anomalies for the entire time period
+sst_anomalies_east = eastern_box.groupby('time.month') - climatology_east
+
+#### Now, calculate the SST anomalies aveaged separately over these two areas or boxes or regions
+# If no NaNs are present, then calculate the mean
+if not sst_anomalies_east.isnull().any():
+    sst_anomalies_mean_east = sst_anomalies_east.mean(['lon', 'lat'])
+else:
+    print("The selection contains NaN values.")
+
+#### Calculate DMI
+dmi = sst_anomalies_mean_west - sst_anomalies_mean_east
+
+#### Plot the western anomaly, eastern anomaly and the dmi together
+fig, ax = plt.subplots()
+
+# Plotting the data
+sst_anomalies_mean_east.plot(ax=ax, label='East SST Anomalies', color='blue')
+sst_anomalies_mean_west.plot(ax=ax, color='red', label='West SST Anomalies')
+
+# Calculating and plotting the difference
+dmi.plot(ax=ax, color='black', linewidth=1.5, label='DMI -- Difference between west box and east box)')
+
+# Adding a title and axis labels
+ax.set_title('Western anomaly, eastern anomaly and the dmi together')
+ax.set_xlabel('Time')
+ax.set_ylabel('SST Anomaly Value')
+
+# Adding a legend to indicate different colors for different lines
+ax.legend()
+
+# Display the plot
+plt.show()
+  </code>
+</pre>
+
+Now, DMI value of more than or equal to + 0.4 is defined as positive IOD and negative value of -0.4 or less is defined as negative IOD (Source: [NOAA](https://www.cpc.ncep.noaa.gov/products/international/ocean_monitoring/IODMI/DMI_month.html)). The values in between -0.4 and +0.4 is defined as neutral phase of IOD. 
+
+Now, using this definition, we can calculate all these phases of IOD. Below, you can see an animation of time evolution of IOD (DMI) over time according to its different phases. Again, all the codes can be seen clicking on the button below or by going to the [notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button -->
 <button onclick="toggleVideoAndCode('video1', 'codeForVideo1')">Toggle between video and code</button>
@@ -545,6 +641,20 @@ Indian Ocean Dipole (IOD) is a coupled ocean and atmosphere phenomenon in the eq
 <!-- Code Block (initially hidden) -->
 <pre id="codeForVideo1" style="display:none;">
   <code>
+# Identify times when DMI is positive, when it is negative and when it is neutral
+positive_IOD = dmi.where(dmi >= 0.4, drop=True)
+negative_IOD = dmi.where(dmi <= -0.4, drop=True)
+neutral_IOD = dmi.where((dmi < 0.4) & (dmi > -0.4), drop = True)
+
+dmi = xr.Dataset({'sst': dmi}, coords={'time': dmi['time'], 'month': dmi['month']})
+
+# Identify times when DMI is positive, when it is negative and when it is neutral
+positive_IOD = dmi['sst'].where(dmi['sst'] >= 0.4)
+negative_IOD = dmi['sst'].where(dmi['sst'] <= -0.4)
+neutral_IOD = dmi['sst'].where((dmi['sst'] > -0.4) & (dmi['sst'] < 0.4))
+
+# Code for animation
+
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.dates as mdates
@@ -636,8 +746,706 @@ plt.show()
   </code>
 </pre>
 
+#### Calculate Composites
+
+Now, we will look at temperature anomalies for different phases of IOD that we just computed. Note that, for the temperature dataset, all the time values are reported for the last day of a month while for sea surface temperature (and so for IOD), the data is reported on the first day of every month. As the time coordinates are close but not exact for temperature data and SST data (IOD phase data), we will have to use the `sel` method with the `method='nearest'` parameter to select the nearest available time points. The composite is shown below and you can find all the code for it as well.
+
+From the figure below, we can see that China has negative temperature anomaly when the IOD is positive and positive temperature anomaly when the IOD is negative. We can also observe that in Kazakhstan, there is positive response to temperature that is with the increase of IOD or SST, the temperature (anomaly) increases and with decreasing SST, temperature there decreases.
+
+<!-- Toggle Button for Image 8 -->
+<button onclick="toggleVisibility('image8', 'code8')" style="...">
+    Toggle between image and code
+</button>
+
+<!-- Image 8 -->
+<img src="composite_anomalies_IOD.png" id="image8" style="display:block;">
+
+<!-- Code Block for Image 8 (initially hidden) -->
+<pre id="code8" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+   ### Load Temperature Data
+# Load data
+ds=xr.open_mfdataset('APHRO_MA_TAVE_025deg_V1808.*.nc')
+
+# We can see that this is a daily data. I will now convert this into monthly data.
+monthly_ds = ds.resample(time='1M').mean()
+
+ds_temp = monthly_ds.tave.sel(time=slice(dmi['time'][0],dmi['time'][-1]))
+
+ds_climo = ds_temp.groupby('time.month').mean()
+ds_anoms = ds_temp.groupby('time.month')-ds_climo
+
+### Now select the dates that match Positive IOD, Neutral and Negative IOD
+positive_IOD_times = positive_IOD.dropna(dim='time')['time']
+positive_IOD_temp = ds_anoms.sel(time=positive_IOD_times, method='nearest').mean(dim='time')
+negative_IOD_times = negative_IOD.dropna(dim='time')['time']
+negative_IOD_temp = ds_anoms.sel(time=negative_IOD_times, method='nearest').mean(dim='time')
+neutral_IOD_times = neutral_IOD.dropna(dim='time')['time']
+neutral_IOD_temp = ds_anoms.sel(time=neutral_IOD_times, method='nearest').mean(dim='time')
+
+comp_temp = [positive_IOD_temp, negative_IOD_temp, neutral_IOD_temp]
+
+import numpy as np
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+from cartopy.util import add_cyclic_point
+import cartopy.mpl.ticker as cticker
+import cartopy.feature as cfeature
+
+labels = ['Positive IOD', 'Negative IOD', 'Neutral IOD']
+clevs = np.arange(-2.0, 2.1, 0.25)
+
+# Define the figure and each axis for 1 row and 3 columns
+fig, axs = plt.subplots(nrows=1, ncols=3,
+                        subplot_kw={'projection': ccrs.PlateCarree()},
+                        figsize=(15, 5))  # Adjusted the figsize for a row layout
+
+# Format function for longitude and latitude labels
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+# Loop over all the IOD types and plot
+for i, iod in enumerate(comp_temp):
+    data = comp_temp[i]
+
+    # Add the cyclic point
+    data, lons = add_cyclic_point(data, coord=comp_temp[i]['lon'])
+
+    # Determine the data range for longitude and latitude
+    min_lon, max_lon = min(comp_temp[i]['lon']), max(comp_temp[i]['lon'])
+    min_lat, max_lat = min(comp_temp[i]['lat']), max(comp_temp[i]['lat'])
+
+    # Contour plot
+    cs = axs[i].contourf(lons, comp_temp[i]['lat'], data, clevs,
+                         transform=ccrs.PlateCarree(),
+                         cmap='coolwarm', extend='both')
+
+    # Set the extent of the map to the data range
+    axs[i].set_extent([min_lon, max_lon, min_lat, max_lat], crs=ccrs.PlateCarree())
+
+    # Longitude and Latitude labels
+    axs[i].set_xticks(np.linspace(min_lon, max_lon, num=5), crs=ccrs.PlateCarree())
+    axs[i].set_yticks(np.linspace(min_lat, max_lat, num=5), crs=ccrs.PlateCarree())
+    axs[i].xaxis.set_major_formatter(plt.FuncFormatter(format_lon))
+    axs[i].yaxis.set_major_formatter(plt.FuncFormatter(format_lat))
+
+    # Add country borders
+    axs[i].add_feature(cfeature.BORDERS, edgecolor='black')
+
+    axs[i].set_title(labels[i])
+    axs[i].coastlines()
+
+# Colorbar and layout adjustments
+fig.subplots_adjust(bottom=0.25, top=0.85, left=0.05, right=0.95, wspace=0.2, hspace=0.5)
+cbar_ax = fig.add_axes([0.25, 0.15, 0.5, 0.025])  # Adjusted the position for the row layout
+cbar = fig.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='degree Celsius/day')
+
+plt.suptitle('Composite Temperature Anomalies for Different Phases of IOD')
+plt.savefig('composite_anomalies_IOD.png', dpi=300, bbox_inches='tight')
+plt.show() 
+  </code>
+</pre>
+
+For convenience, we can also look at how different is positive or negative phase compared to neutral phase for temperature. This is also in accordance with the composite plot we have just seen.
+
+<!-- Toggle Button for Image 9 -->
+<button onclick="toggleVisibility('image9', 'code9')" style="...">
+    Toggle between image and code
+</button>
+
+<!-- Image 9 -->
+<img src="omparison_plot_IOD.png" id="image9" style="display:block;">
+
+<!-- Code Block for Image 9 (initially hidden) -->
+<pre id="code9" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+diff_temp=[positive_IOD_temp-neutral_IOD_temp, 
+             negative_IOD_temp-neutral_IOD_temp]
+
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import numpy as np
+from cartopy.util import add_cyclic_point
+import cartopy.feature as cfeature
+
+labels=['Positive IOD-Neutral','Negative IOD-Neutral']
+clevs = np.arange(-2.0, 2.1, 0.25)
+
+# Define the figure and each axis for 1 row and 2 columns
+fig, axs = plt.subplots(nrows=1, ncols=2, subplot_kw={'projection': ccrs.PlateCarree()}, figsize=(15, 7))
+
+# Format function for longitude and latitude labels
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+# Loop over all the elements in diff_temp (assuming diff_temp is your data)
+for i, IOD in enumerate(diff_temp):
+    data = diff_temp[i]
+
+    # Add the cyclic point
+    data, lons = add_cyclic_point(data, coord=diff_temp[i]['lon'])
+
+    # Determine the data range for longitude and latitude
+    min_lon, max_lon = min(diff_temp[i]['lon']), max(diff_temp[i]['lon'])
+    min_lat, max_lat = min(diff_temp[i]['lat']), max(diff_temp[i]['lat'])
+
+    # Contour plot
+    cs = axs[i].contourf(lons, diff_temp[i]['lat'], data, clevs,
+                         transform=ccrs.PlateCarree(),
+                         cmap='coolwarm', extend='both')
+
+    # Set the extent of the map to the data range
+    axs[i].set_extent([min_lon, max_lon, min_lat, max_lat], crs=ccrs.PlateCarree())
+
+    # Longitude and Latitude labels
+    axs[i].set_xticks(np.linspace(min_lon, max_lon, num=5), crs=ccrs.PlateCarree())
+    axs[i].set_yticks(np.linspace(min_lat, max_lat, num=5), crs=ccrs.PlateCarree())
+    axs[i].xaxis.set_major_formatter(plt.FuncFormatter(format_lon))
+    axs[i].yaxis.set_major_formatter(plt.FuncFormatter(format_lat))
+
+    # Add country borders and coastlines
+    axs[i].add_feature(cfeature.BORDERS, edgecolor='black')
+    axs[i].coastlines()
+
+    # Set title for each subplot
+    axs[i].set_title(labels[i])
+
+# Adjust the layout
+fig.subplots_adjust(bottom=0.15, top=0.8, left=0.05, right=0.95, wspace=0.2, hspace=0.05)
+
+# Add a colorbar axis at the bottom of the graph
+# Lower the colorbar by adjusting the first value in fig.add_axes
+cbar_ax = fig.add_axes([0.15, 0.05, 0.7, 0.02])  # Lower the colorbar
+
+# Draw the colorbar
+cbar = fig.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='degree Celsius/day')
+
+# Add a big title at the top with increased font size and adjusted position
+plt.suptitle('Composite temperature differences during different phases of IOD', fontsize=20, y=0.92)
+
+# Save and show the plot
+plt.savefig('comparison_plot_IOD.png', dpi=300, bbox_inches='tight')
+plt.show()  
+  </code>
+</pre>
+
+#### Is the mean difference between Positive IOD and Neutral IOD significant?
+
+Now, we will check whether the mean difference between Positive IOD and Neutral IOD is statistically significant or not. 
+
+##### Null Hypothesis
+
+**Null Hypothesis (H0)**: Differences between the mean temperature in positive IOD and the mean temperature in neutral IOD is zero
+**Alternative Hypothesis (H1)**: There is a difference between these two temperatures.
+
+We will test the hypothesis using a two-sided test, based on the Student's t-Test, for the null hypothesis that 2 independent samples have identical average (expected) values. This test assumes that the populations have identical variances by default.
+
+The following plot (and the accompanying code) shows the locations where the value of t-Test is statistically significant or where P-value is less than 0.05.
+
+<!-- Toggle Button for Image 10 -->
+<button onclick="toggleVisibility('image10', 'code10')" style="...">
+    Toggle between image and code
+</button>
+
+<!-- Image 10 -->
+<img src="stats_ttest.png" id="image10" style="display:block;">
+
+<!-- Code Block for Image 10 (initially hidden) -->
+<pre id="code10" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+from scipy.stats import ttest_ind
+    
+positive_IOD_temp_vals= ds_anoms.sel(time=positive_IOD_times, method='nearest')
+negative_IOD_temp_vals= ds_anoms.sel(time=negative_IOD_times, method='nearest')
+neutral_IOD_temp_vals= ds_anoms.sel(time=neutral_IOD_times, method='nearest')
+
+tstat,pval = ttest_ind(positive_IOD_temp_vals, 
+                neutral_IOD_temp_vals, 
+                equal_var = False)
+
+### Make a mask of where the value is significant
+p =0.05
+mask_diff = diff_temp[0].where(pval <= p)
+# mask_diff
+
+# Plot the difference
+
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import numpy as np
+from cartopy.util import add_cyclic_point
+import cartopy.feature as cfeature
+
+labels=['Positive IOD vs. Neutral']
+clevs=np.arange(-3,3.5,0.5)
+hatch_levs=[0]
+
+# Increase the figure size, particularly the width
+fig, axs = plt.subplots(nrows=1, ncols=1,
+                        subplot_kw={'projection': ccrs.PlateCarree()},
+                        figsize=(10, 6))  # Adjusted figure size
+
+data = diff_temp[0]
+
+# Add the cyclic point
+data, lons = add_cyclic_point(data, coord=diff_temp[0]['lon'])
+mask_data, lons = add_cyclic_point(mask_diff, coord=diff_temp[0]['lon'])
+
+# Contour plot
+cs = axs.contourf(lons, diff_temp[0]['lat'], data, clevs,
+                  transform=ccrs.PlateCarree(),
+                  cmap='coolwarm', extend='both')
+
+# Overlay of stippling
+ss = axs.contourf(lons, diff_temp[0]['lat'], mask_data, [0, 1],
+                  transform=ccrs.PlateCarree(), colors=['None'],
+                  hatches=['.'], extend='both', alpha=0.0)
+
+# Add country borders and coastlines
+axs.add_feature(cfeature.BORDERS, edgecolor='black')
+axs.coastlines()
+
+# Set the longitude and latitude ticks
+axs.set_xticks(np.arange(np.floor(min(lons)), np.ceil(max(lons)), 15), crs=ccrs.PlateCarree())
+axs.set_yticks(np.arange(np.floor(min(diff_temp[0]['lat'])), np.ceil(max(diff_temp[0]['lat'])), 15), crs=ccrs.PlateCarree())
+
+# Format function for longitude and latitude labels
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+axs.xaxis.set_major_formatter(plt.FuncFormatter(format_lon))
+axs.yaxis.set_major_formatter(plt.FuncFormatter(format_lat))
+
+# Adjust the location of the subplots on the page to make room for the colorbar
+fig.subplots_adjust(bottom=0.25, top=0.9, left=0.05, right=0.95, wspace=0.1, hspace=0.5)
+
+# Add a colorbar axis at the bottom of the graph
+cbar_ax = fig.add_axes([0.15, 0.15, 0.7, 0.025])
+
+# Draw the colorbar
+cbar = fig.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='degree Celsius/day')
+
+# Add a big title at the top
+plt.suptitle('Composite Temperature Differences (Positive IOD-Neutral)')
+
+plt.savefig('stats_ttest.png')
+  </code>
+</pre>
+
+For all the points or locations where the mean temperature during positive IOD is significantly different than neutral phase of IOD is shown with dots. Now, we will look at a single such point, here a point at 75 degree East and 22.5 degree North. We will now visually inspect how IOD and temperature anomaly at this point move together over time.
+
+<!-- Toggle Button for Image 11 -->
+<button onclick="toggleVisibility('image11', 'code11')" style="...">
+    Toggle between image and code
+</button>
+
+<!-- Image 11 -->
+<img src="temp_DMI_movement.png" id="image11" style="display:block;">
+
+<!-- Code Block for Image 11 (initially hidden) -->
+<pre id="code11" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+    pt=ds_anoms.sel(lat=22.5,lon=75,method='nearest')
+
+fig, ax1 = plt.subplots()
+
+ax2 = ax1.twinx()
+ax1.plot(pt['time'],pt,'b')
+ax2.plot(dmi['time'],dmi['sst'],'r')
+
+ax1.set_title("Temperature Anomaly and DMI Movement over Time")
+ax1.set_ylabel('Temperature Anomaly [75˚East,22.5˚North]  $degree Celsius\;d^{-1}$', color='b')
+ax1.set_xlabel('Year')
+ax2.set_ylabel('DMI Index', color='r') ;
+
+# Save and show the plot
+plt.savefig('temp_DMI_movement.png', dpi=300, bbox_inches='tight')
+plt.show()
+  </code>
+</pre>
+
+#### Correlation analysis
+
+Now, we will look at the correlation between DMI (IOD) and temperature anomalies over Asia. Look at the code below [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb):
+
+<!-- Toggle Button for Image 12 -->
+<button onclick="toggleVisibility('image12', 'code12')" style="...">
+    Toggle between image and code
+</button>
+
+<!-- Image 12 -->
+<img src="correlation_DMI_temp_anom.png" id="image12" style="display:block;">
+
+<!-- Code Block for Image 12 (initially hidden) -->
+<pre id="code12" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+# Resample ds_anoms to the first day of each month
+ds_anoms_resampled = ds_anoms.resample(time='MS').mean()  # 'MS' stands for 'Month Start'
+
+# ds_anoms["time"].values
+# Convert the string to a datetime64 object
+end_date = np.datetime64('2015-12-31')
+
+# Select the slice of the dmi dataset up to the end_date
+dmi_limited = dmi.sel(time=slice(None, end_date))
+
+# Drop the 'month' coordinate
+dmi_limited = dmi_limited.drop('month')
+
+# Compute correlation over the domain
+r_map = xr.corr(dmi_limited['sst'], ds_anoms_resampled, dim='time')
+
+# Plot the correlation map
+
+clevs = np.arange(-1, 1.1, 0.1)
+fig, ax = plt.figure(figsize=(11, 8.5)), plt.axes(projection=ccrs.PlateCarree())
+fig.subplots_adjust(bottom=0.2, top=0.9, left=0.05, right=0.95, wspace=0.1, hspace=0.5)
+
+
+# Add cyclic point
+data=r_map
+data,lon=add_cyclic_point(r_map,coord=ds_anoms['lon'])
+
+# Make a filled contour plot
+cs=ax.contourf(lon,ds_anoms['lat'],
+            data,clevs,
+            transform=ccrs.PlateCarree(),
+            cmap='seismic',extend='both')
+
+# Add coastlines
+ax.coastlines()
+
+# Add gridlines
+ax.gridlines()
+
+# Format function for longitude and latitude labels
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+# Add country borders and coastlines
+ax.add_feature(cfeature.BORDERS, edgecolor='black')
+ax.coastlines()
+
+# Set the longitude and latitude ticks
+ax.set_xticks(np.arange(np.floor(min(lons)), np.ceil(max(lons)), 15), crs=ccrs.PlateCarree())
+ax.set_yticks(np.arange(np.floor(min(diff_temp[0]['lat'])), np.ceil(max(diff_temp[0]['lat'])), 15), crs=ccrs.PlateCarree())
+
+ax.xaxis.set_major_formatter(plt.FuncFormatter(format_lon))
+ax.yaxis.set_major_formatter(plt.FuncFormatter(format_lat))
+
+# Format function for longitude and latitude labels
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+
+# Adjust the location of the subplots on the page to make room for the colorbar
+fig.subplots_adjust(bottom=0.25, top=0.9, left=0.05, right=0.95, wspace=0.1, hspace=0.5)
+
+# Add colorbar with increased size
+cbar_ax = fig.add_axes([0.15, 0.1, 0.7, 0.04])  # Adjusted y position of colorbar
+cbar = plt.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='Correlation Coefficient')
+cbar.ax.tick_params(labelsize=10)  # Adjust font size of colorbar labels
+
+# Add title to the map
+ax.set_title('Correlation between DMI(IOD) and Temperature Anomalies', fontsize=14, pad=20)
+plt.savefig('correlation_DMI_temp_anom.png', dpi=300, bbox_inches='tight')
+plt.show()
+  </code>
+</pre>
+
+From the above map, we can see that Northeast and Northwest of China, south of India, Kazakhstan, Uzbekistan and East of Mongolia have high positive correlation coefficient value with DMI, that means as positive anomaly increased as defined by DMI, the temperature in these areas also increased simultaneouly. Similarly, as temperature anomaly decreases or DMI increases, the temperature also decreases. We can also observe that for Philipines, and Papua New Guinea, the correlation coefficient is negative that is if IOD goes up, temperature goes down and if IOD goes down, temperature goes up in these areas.
+
+Now, we can check the statistical significance of this correlation.
+
+<!-- Toggle Button for Image 13 -->
+<button onclick="toggleVisibility('image13', 'code13')" style="...">
+    Toggle between image and code
+</button>
+
+<!-- Image 13 -->
+<img src="correlation_IOD_temp_significance.png" id="image13" style="display:block;">
+
+<!-- Code Block for Image 13 (initially hidden) -->
+<pre id="code13" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+import numpy as np
+from scipy.stats import pearsonr
+import time
+
+nx = len(ds_anoms_resampled['lon'])
+ny = len(ds_anoms_resampled['lat'])
+
+p_array = np.zeros((ny, nx))
+r_array = np.zeros((ny, nx))
+
+# Computing
+t_start = time.perf_counter()
+temp = ds_anoms_resampled.compute()
+
+for i in range(nx):
+    for j in range(ny):
+        # Extract the series and remove pairs where either is NaN
+        sst_series = dmi_limited['sst'].values
+        temp_series = temp[:, j, i]
+
+        # Create a mask for valid (non-NaN) pairs
+        valid_mask = ~np.isnan(sst_series) & ~np.isnan(temp_series)
+        
+        # Filter the series to include only valid pairs
+        valid_sst_series = sst_series[valid_mask]
+        valid_temp_series = temp_series[valid_mask]
+
+        # Check if there are enough valid data points
+        if len(valid_sst_series) > 1:
+            r, p = pearsonr(valid_sst_series, valid_temp_series)
+            r_array[j, i] = r
+            p_array[j, i] = p
+        else:
+            # Set NaN or some specific value if there are not enough data points
+            r_array[j, i] = np.nan
+            p_array[j, i] = np.nan
+
+# print(f"{time.perf_counter()-t_start:0.2f} s")
+
+mask_sig=np.where(p_array<0.05,r_array,np.nan)
+
+# Plotting
+
+clevs=np.arange(-1,1.1,0.1)
+
+fig = plt.figure(figsize=(11,8.5))
+
+# Set the axes using the specified map projection
+ax=plt.axes(projection=ccrs.PlateCarree())
+
+# Add cyclic point
+data=r_array
+data,lon=add_cyclic_point(data,coord=ds_anoms_resampled['lon'])
+mask_data,lons=add_cyclic_point(mask_sig,coord=ds_anoms_resampled['lon'])
+
+# Make a filled contour plot
+cs=ax.contourf(lon,ds_anoms_resampled['lat'],
+            data,clevs,
+            transform=ccrs.PlateCarree(),
+            cmap='bwr',extend='both')
+
+ax.contourf(lon,ds_anoms_resampled['lat'],mask_data,[0,1],
+            transform = ccrs.PlateCarree(),colors='None',
+            hatches=['//','\\\\'],extend='both',alpha=0)
+
+# Add coastlines
+ax.coastlines()
+
+# Add gridlines
+ax.gridlines()
+
+# Add country borders and coastlines
+ax.add_feature(cfeature.BORDERS, edgecolor='black')
+
+# Format function for longitude and latitude labels
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+
+# Set the longitude and latitude ticks
+ax.set_xticks(np.arange(np.floor(min(lons)), np.ceil(max(lons)), 15), crs=ccrs.PlateCarree())
+ax.set_yticks(np.arange(np.floor(min(diff_temp[0]['lat'])), np.ceil(max(diff_temp[0]['lat'])), 15), crs=ccrs.PlateCarree())
+
+ax.xaxis.set_major_formatter(plt.FuncFormatter(format_lon))
+ax.yaxis.set_major_formatter(plt.FuncFormatter(format_lat))
+
+# Format function for longitude and latitude labels
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+
+# Adjust the location of the subplots on the page to make room for the colorbar
+fig.subplots_adjust(bottom=0.25, top=0.9, left=0.05, right=0.95, wspace=0.1, hspace=0.5)
+
+# Call colorbar
+cbar=plt.colorbar(cs,orientation='horizontal',shrink=0.6,
+                 label='Correlation Coefficient')
+
+# Add title
+plt.title('Significant Correlation between IOD (DMI) and Temperature Anomalies') ;
+
+plt.savefig('correlation_IOD_temp_significance.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+  </code>
+</pre>
+
+We see that in southern India, Kazakhstan, south-eastern and south-western part of China, IOD and temperature anomalies have statistically significant positive correlation. While in Papua New Guinea and Philippines, theere is statistically significant negative correlation.
+
+#### Regression analysis
+
+In this part, I will take temperature anomaly over Asia is explained by IOD. So, we will regress DMI Index on temperature anomaly and see if the variation in temperature anomaly can be explained by DMI. We will also look at which areas or countries have clear signal from DMI as indicated by statistically significant p-value or a p-value less than 0.05. We will also see if the pattern of correlation between DMI and temperature anomaly is observed for regression coefficient. It is usual to expect to have similar pattern.
+
+<!-- Toggle Button for Image 14 -->
+<button onclick="toggleVisibility('image14', 'code14')" style="...">
+    Toggle between image and code
+</button>
+
+<!-- Image 14 -->
+<img src="air_temp_1961.png" id="image14" style="display:block;">
+
+<!-- Code Block for Image 14 (initially hidden) -->
+<pre id="code14" style="display:none; background-color: #f7f7f7; ...">
+  <code>
+from scipy.stats import linregress
+
+import numpy as np
+from scipy.stats import linregress
+
+nx = len(ds_anoms_resampled['lon'])
+ny = len(ds_anoms_resampled['lat'])
+
+p_array = np.zeros((ny, nx))
+r_array = np.zeros((ny, nx))
+m_array = np.zeros((ny, nx))
+
+x = dmi_limited['sst'].values  # Make sure this is a numpy array
+temp = ds_anoms_resampled.compute()
+
+for j in range(ny):
+    # print(f"{j},", end=" ")
+    for i in range(nx):
+        # print(i, j)
+        y = temp[:, j, i]
+
+        # Create a mask for valid (non-NaN) pairs
+        valid_mask = ~np.isnan(x) & ~np.isnan(y)
+        
+        # Filter the series to include only valid pairs
+        valid_x = x[valid_mask]
+        valid_y = y[valid_mask]
+
+        # Check if there are enough valid data points
+        if len(valid_x) > 1:
+            m, b, r, p, e = linregress(valid_x, valid_y)
+            m_array[j, i] = m
+            r_array[j, i] = r
+            p_array[j, i] = p
+        else:
+            # Set NaN or some specific value if there are not enough data points
+            m_array[j, i] = np.nan
+            r_array[j, i] = np.nan
+            p_array[j, i] = np.nan
+
+print("*** DONE ***")
+
+### Make a mask 
+
+### Only include points where our regression coefficient is significantly different from zero.
+
+mask_sig = np.where(p_array<0.05,m_array,np.nan) # NaNs where the signficance test fails
+
+### Plot the regression coefficient 
+
+clevs=np.arange(-3,3.25,0.25)
+fig = plt.figure(figsize=(11,8.5))
+
+# Set the axes using the specified map projection
+ax = plt.axes(projection=ccrs.PlateCarree())
+
+# Add cyclic point
+data = m_array
+data,lon = add_cyclic_point(data,coord=ds_anoms_resampled['lon'])
+mask_data,lons = add_cyclic_point(mask_sig,coord=ds_anoms_resampled['lon'])
+
+# Make a filled contour plot
+cs = ax.contourf(lon,ds_anoms_resampled['lat'],
+            data,clevs,
+            transform=ccrs.PlateCarree(),
+            cmap='coolwarm',extend='both')
+
+ax.contourf(lon,ds_anoms_resampled['lat'],mask_data,[0,1],
+            transform = ccrs.PlateCarree(),colors='None',
+            hatches=['..','..'],extend='both',alpha=0)
+
+# Add coastlines
+ax.coastlines()
+
+# Add gridlines
+ax.gridlines()
+
+# Format function for longitude and latitude labels
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+# Add country borders and coastlines
+ax.add_feature(cfeature.BORDERS, edgecolor='black')
+
+# Set the longitude and latitude ticks
+ax.set_xticks(np.arange(np.floor(min(lons)), np.ceil(max(lons)), 15), crs=ccrs.PlateCarree())
+ax.set_yticks(np.arange(np.floor(min(diff_temp[0]['lat'])), np.ceil(max(diff_temp[0]['lat'])), 15), crs=ccrs.PlateCarree())
+
+ax.xaxis.set_major_formatter(plt.FuncFormatter(format_lon))
+ax.yaxis.set_major_formatter(plt.FuncFormatter(format_lat))
+
+# Format function for longitude and latitude labels
+def format_lon(value, tick_number):
+    return f"{value:.1f}°E" if value >= 0 else f"{abs(value):.1f}°W"
+
+def format_lat(value, tick_number):
+    return f"{value:.1f}°N" if value >= 0 else f"{abs(value):.1f}°S"
+
+# Adjust the location of the subplots on the page to make room for the colorbar
+fig.subplots_adjust(bottom=0.25, top=0.9, left=0.05, right=0.95, wspace=0.1, hspace=0.5)
+
+# Add colorbar with increased size
+cbar_ax = fig.add_axes([0.15, 0.1, 0.7, 0.04])  # Adjusted y position of colorbar
+cbar = plt.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='Regression Coefficient (degree Celsius/day)')
+cbar.ax.tick_params(labelsize=10)  # Adjust font size of colorbar labels
+
+# Add title to the map
+ax.set_title('Regression between DMI(IOD) and Temperature Anomalies', fontsize=14, pad=20)
+plt.savefig('regression_temp_anom_DMI.png', dpi=300, bbox_inches='tight')
+plt.show()
+  </code>
+</pre>
+
+Similar to correlation sgnificance map, we can see that Northeast and Northwest of China, south of India, Kazakhstan, Uzbekistan and East of Mongolia have high positive regression coefficient, that means as DMI increases or as sea surface temperature (SST) increases, temperature in these areas also increase. Similarly, as SST decreases, temperature also decreases in these areas. We can also observe that for Philipines, north west part of Thailand, northern part of Vietnam and Papua New Guinea, the value of regression coefficient is negative and significant. For these areas, if SST goes up (positive IOD), temperature increases and likewise; if SST goes down (negative IOD), temperature goes up in these areas.
+
 ### Results 
-What does your analysis show that is scientifically interesting? What have you discovered?  
+
+This project gives us some insights into the dynamics between the Indian Ocean Dipole (IOD) and temperature variations across Asia. Here are the key findings:
+
+**Temporal Temperature Variations**: We observed temperature changes over time, particularly when comparing data from 1961 and 2015. This was evident from the temperature anomaly plots, indicating a shift in temperature patterns over the decades.
+
+**Seasonal Analysis**: Focusing on the June to September period, a crucial season for Asian climate, we identified trends in temperature evolution from 1961 to 2015. Our analysis showed noticeable variations, but a consistent increase or decrease in temperature was not uniformly evident across all regions.
+
+**Spatial Variability of Temperature**: The study highlighted significant spatial variability in temperature standard deviations across Asia. Notably, areas like China and Kazakhstan exhibited distinct temperature responses correlating with the IOD phases.
+
+IOD's Influence on Regional Temperatures: Our research delved into how different IOD phases - positive, negative, and neutral - impact regional temperatures. The results from composite maps and statistical tests (like t-tests) underscored the significant influence of IOD on temperature anomalies in specific Asian regions.
+
+Correlation and Regression Analyses: We conducted correlation and regression analyses to quantify the relationship between IOD and temperature anomalies. The findings indicated strong correlations in certain areas, affirming the impact of IOD on regional climatic conditions. This was further reinforced by regression analyses, revealing the extent to which temperature variations could be attributed to changes in IOD.
+
+Significance Testing: Our hypothesis testing and statistical significance assessments provided a robust framework for understanding the impact of IOD on temperature anomalies. We found statistically significant correlations in various regions, lending credence to the observed patterns. 
 
 ### Summary 
 Provide short summary of what you learned from your analysis of your data (both scientific and technical), what you would do next to advance this analysis, and any challenges or issues you encountered/overcame.
