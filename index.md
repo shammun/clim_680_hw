@@ -221,7 +221,6 @@ import seaborn as sns
 plt.style.use('seaborn-whitegrid')
 sns.set_context('talk')
 
-# Assuming ds is your loaded xarray dataset
 # Select the temperature variable (tave)
 tave = ds['tave']
 
