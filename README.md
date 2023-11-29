@@ -20,89 +20,10 @@ Interactive Notebooks
 Detailed Analysis with Python Code 🐍
 GitHub Page 📖 [Github Page](https://shammun.github.io/clim_680_hw/)
 
-Some examples:
-
-<button onclick="toggleVisibility('image4', 'code4')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
-    Toggle between image and code
-</button>
-<!-- Image -->
-<img src="jjas_temperature_anomaly.gif" id="image4" style="display:block;">
-
-
-
-<pre id="code4" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
-  <code>
-import numpy as np
-import xarray as xr
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-import cartopy.crs as ccrs
-import cartopy.feature as cfeature
-import cartopy.mpl.ticker as cticker
-
-def load_dataset(year):
-    filename = f"APHRO_MA_TAVE_025deg_V1808.{year}.nc.nc"
-    ds = xr.open_dataset(filename)
-    return ds
-
-def calculate_jjas_anomaly(year, long_term_mean):
-    jjas_data = load_dataset(year)['tave'].sel(time=load_dataset(year)['time.month'].isin([6, 7, 8, 9])).mean(dim='time')
-    anomaly = jjas_data - long_term_mean
-    return anomaly
-
-def plot_data(data, ax):
-    lons, lats = np.meshgrid(data['lon'], data['lat'])
-    # Adjust the level_interval for finer gradations
-    level_interval = 0.2  # Smaller interval for more detailed color gradations
-    levels = np.linspace(data.min(), data.max(), num=int((data.max() - data.min()) / level_interval))
-    cs = ax.contourf(lons, lats, data, levels=levels, transform=ccrs.PlateCarree(), cmap='coolwarm', extend='both')
-    return cs
-
-# Compute the long-term JJAS mean (1961-2015)
-long_term_mean = xr.concat([load_dataset(year)['tave'].sel(time=load_dataset(year)['time.month'].isin([6, 7, 8, 9])) for year in range(1961, 2016)], dim='time').mean(dim='time')
-
-# Create the initial figure and axis with adjusted vertical size
-fig, ax = plt.subplots(figsize=(11, 10), subplot_kw={'projection': ccrs.PlateCarree()})
-ax.coastlines()
-ax.add_feature(cfeature.BORDERS, linestyle=':')
-
-# Load the first year's data to initialize the colorbar
-initial_data = calculate_jjas_anomaly(1961, long_term_mean)
-cs = plot_data(initial_data, ax)
-
-# Adjust the colorbar to align with the map's extent
-cbar_ax = fig.add_axes([0.125, 0.08, 0.775, 0.03])  # Slightly raise the colorbar
-cbar = fig.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='Temperature Anomaly (Celsius)')
-
-def update_plot(year):
-    ax.clear()
-    ax.coastlines()
-    ax.add_feature(cfeature.BORDERS, linestyle=':')
-    data = calculate_jjas_anomaly(year, long_term_mean)
-    cs = plot_data(data, ax)
-    ax.set_title(f"JJAS Temperature Anomaly for {year}", fontsize=14, pad=20)
-    
-    # Set dynamic longitude and latitude labels based on the data
-    lon_range = np.arange(np.floor(data['lon'].min()), np.ceil(data['lon'].max()) + 1, 10)
-    lat_range = np.arange(np.floor(data['lat'].min()), np.ceil(data['lat'].max()) + 1, 10)
-    ax.set_xticks(lon_range, crs=ccrs.PlateCarree())
-    ax.set_yticks(lat_range, crs=ccrs.PlateCarree())
-    ax.xaxis.set_major_formatter(cticker.LongitudeFormatter())
-    ax.yaxis.set_major_formatter(cticker.LatitudeFormatter())
-
-    return cs
-
-# Create the animation
-years = range(1961, 2016)
-ani = animation.FuncAnimation(fig, update_plot, frames=years, repeat=True, blit=False)
-
-# Save the animation as a .gif
-ani.save('jjas_temperature_anomaly.gif', writer='imagemagick', fps=1.8)
-
-plt.show()
-  </code>
-</pre>
-
+<video id="video1" width="820" height="640" controls style="display:block;">
+  <source src="IOD_Animation_2_Smaller_Size.mp4" type="video/mp4">
+  Evolution of IOD Phases
+</video>
 
 ## 🚀 Getting Started
 These instructions will get you a copy of the project up and running on your local machine to be able to run the notebooks.
@@ -151,33 +72,10 @@ Shammunul Islam - [sha_is13@yahoo.com, shais13irs@gmail.com, si2267@gmu.edu]
 
 Project Link: [https://shammun.github.io/clim_680_hw/]
 
+## Screenshots
 
-<script>
-  function toggleVisibility(imageId, codeId) {
-    var image = document.getElementById(imageId);
-    var code = document.getElementById(codeId);
+![Screenshot1](regression_temp_anom_DMI.png)
+![Screenshot2](correlation_IOD_temp_significance.png)
+![Composite anomalies](composite_anomalies_IOD)
+![JJAS temperature anomaly](jjas_temperature_anomaly.gif)
 
-    if (image.style.display === "none") {
-      image.style.display = "block";
-      code.style.display = "none";
-    } else {
-      image.style.display = "none";
-      code.style.display = "block";
-    }
-  }
-</script>
-
-<script>
-  function toggleVideoAndCode(videoId, codeId) {
-    var video = document.getElementById(videoId);
-    var code = document.getElementById(codeId);
-
-    if (video.style.display === "none") {
-      video.style.display = "block";
-      code.style.display = "none";
-    } else {
-      video.style.display = "none";
-      code.style.display = "block";
-    }
-  }
-</script>
