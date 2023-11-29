@@ -1447,6 +1447,7 @@ We saw from the analysis that the Indian Ocean Dipole plays a crucial role in in
 
 I faced many challenges in dealing with these datasets because the temperature dataset and the SST dataset from NOAA uses different time index which made it challenging for me to subset by common time index (especially, when calculating composites). Further, Dask XArray was also a bit challenging as sometimes due to a lack of my klnowledge of it, my code took forever to execute. But, at the end, everything worked and I learned a lot and can't wait to move ahead and use more sophisticated statical analyses and also ML and DL models with these data to more thoroughly understand how IOD plays a role in Asia. I also plan to include atmospheric analysis or understanding of climate dynamics in this region to conduct a more thorough research coupled with quantitative analysis. 
 
+**Note: To run the notebooks, please follow the step-by-step guidelines provided in the [first page](https://github.com/shammun/clim_680_hw) of the repo or you can also look at the [README.md](https://github.com/shammun/clim_680_hw/blob/main/README.md) file. Detailed instruction on setting up with the file environment.yml is provided there**
 
 <script>
   function toggleVisibility(imageId, codeId) {
