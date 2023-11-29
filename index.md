@@ -57,83 +57,6 @@ First of all, air temperature (in Celsius) is plotted over Asia using different 
 <!-- Image -->
 <img src="air_temp_1961.png" id="image1" style="display:block;">
 
-Now, let's see if the temperature changed in 2015 compared to 1961 by plotting the temperature anomaly.
-
-<button onclick="toggleVisibility('image2', 'code2')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
-    Toggle between image and code
-</button>
-<!-- Image -->
-<img src="air_temp_anomaly_2015_1961.png" id="image2" style="display:block;">
-
-##### June, July, August, September (JJAS) temperature
-
-This is normally the summer season and here, I have investigated whether temperature increased in Asia in this season. Let's look at the temperature evolution over the period from 1961 to 2015.
-
-<button onclick="toggleVisibility('image3', 'code3')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
-    Toggle between image and code
-</button>
-<!-- Image -->
-<img src="average_temp_JJAS_over_years.png" id="image3" style="display:block;">
-
-Now, let's have a look at JJAS temperature anomaly over this period.
-
-<button onclick="toggleVisibility('image4', 'code4')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
-    Toggle between image and code
-</button>
-<!-- Image -->
-<img src="jjas_temperature_anomaly.gif" id="image4" style="display:block;">
-
-
-
-<!-- Toggle Button -->
-<button onclick="toggleVideoAndCode('video1', 'codeForVideo1')">Toggle between video and code</button>
-
-<!-- Video -->
-<video id="video1" width="820" height="640" controls style="display:block;">
-  <source src="IOD_Animation_2_Smaller_Size.mp4" type="video/mp4">
-  Evolution of IOD Phases
-</video>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Results 
-What does your analysis show that is scientifically interesting? What have you discovered?  
-
-### Summary 
-Provide short summary of what you learned from your analysis of your data (both scientific and technical), what you would do next to advance this analysis, and any challenges or issues you encountered/overcame.
-
-
-
-
-
-
-
-
-
 <!-- Code Block (initially hidden) -->
 <pre id="code1" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
@@ -197,6 +120,16 @@ plt.savefig('air_temp_1961.png', dpi=300, bbox_inches='tight')
 plt.show()
   </code>
 </pre>
+
+
+Now, let's see if the temperature changed in 2015 compared to 1961 by plotting the temperature anomaly.
+
+<button onclick="toggleVisibility('image2', 'code2')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
+    Toggle between image and code
+</button>
+<!-- Image -->
+<img src="air_temp_anomaly_2015_1961.png" id="image2" style="display:block;">
+
 
 <pre id="code2" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
@@ -267,7 +200,15 @@ plt.show()
   </code>
 </pre>
 
+##### June, July, August, September (JJAS) temperature
 
+This is normally the summer season and here, I have investigated whether temperature increased in Asia in this season. Let's look at the temperature evolution over the period from 1961 to 2015.
+
+<button onclick="toggleVisibility('image3', 'code3')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
+    Toggle between image and code
+</button>
+<!-- Image -->
+<img src="average_temp_JJAS_over_years.png" id="image3" style="display:block;">
 
 
 <pre id="code3" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
@@ -331,7 +272,13 @@ plt.show()
   </code>
 </pre>
 
+Now, let's have a look at JJAS temperature anomaly over this period.
 
+<button onclick="toggleVisibility('image4', 'code4')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
+    Toggle between image and code
+</button>
+<!-- Image -->
+<img src="jjas_temperature_anomaly.gif" id="image4" style="display:block;">
 
 
 
@@ -413,6 +360,19 @@ plt.show()
 
 
 
+
+
+
+
+
+<!-- Toggle Button -->
+<button onclick="toggleVideoAndCode('video1', 'codeForVideo1')">Toggle between video and code</button>
+
+<!-- Video -->
+<video id="video1" width="820" height="640" controls style="display:block;">
+  <source src="IOD_Animation_2_Smaller_Size.mp4" type="video/mp4">
+  Evolution of IOD Phases
+</video>
 
 
 
@@ -509,6 +469,35 @@ plt.legend()
 plt.show()
   </code>
 </pre>
+
+### Results 
+What does your analysis show that is scientifically interesting? What have you discovered?  
+
+### Summary 
+Provide short summary of what you learned from your analysis of your data (both scientific and technical), what you would do next to advance this analysis, and any challenges or issues you encountered/overcame.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
