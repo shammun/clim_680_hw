@@ -1308,7 +1308,7 @@ In this part, I will take temperature anomaly over Asia is explained by IOD. So,
 </button>
 
 <!-- Image 14 -->
-<img src="air_temp_1961.png" id="image14" style="display:block;">
+<img src="regression_temp_anom_DMI.png" id="image14" style="display:block;">
 
 <!-- Code Block for Image 14 (initially hidden) -->
 <pre id="code14" style="display:none; background-color: #f7f7f7; ...">
