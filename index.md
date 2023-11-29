@@ -1439,44 +1439,14 @@ This project gives us some insights into the dynamics between the Indian Ocean D
 
 **Seasonal Analysis**: Focusing on the June to September period, a crucial season for Asian climate, we identified trends in temperature evolution from 1961 to 2015. Our analysis showed noticeable variations, but a consistent increase or decrease in temperature was not uniformly evident across all regions.
 
-**Spatial Variability of Temperature**: The study highlighted significant spatial variability in temperature standard deviations across Asia. Notably, areas like China and Kazakhstan exhibited distinct temperature responses correlating with the IOD phases.
+**IOD's Influence on Regional Temperatures**: Our research delved into how different IOD phases - positive, negative, and neutral - impact regional temperatures. The results from composite maps and statistical tests (like t-tests) underscored the significant influence of IOD on temperature anomalies in specific Asian regions.
 
-IOD's Influence on Regional Temperatures: Our research delved into how different IOD phases - positive, negative, and neutral - impact regional temperatures. The results from composite maps and statistical tests (like t-tests) underscored the significant influence of IOD on temperature anomalies in specific Asian regions.
-
-Correlation and Regression Analyses: We conducted correlation and regression analyses to quantify the relationship between IOD and temperature anomalies. The findings indicated strong correlations in certain areas, affirming the impact of IOD on regional climatic conditions. This was further reinforced by regression analyses, revealing the extent to which temperature variations could be attributed to changes in IOD.
-
-Significance Testing: Our hypothesis testing and statistical significance assessments provided a robust framework for understanding the impact of IOD on temperature anomalies. We found statistically significant correlations in various regions, lending credence to the observed patterns. 
+**Correlation and Regression Analyses**: We conducted correlation and regression analyses to quantify the relationship between IOD and temperature anomalies. The findings indicated strong correlations in certain areas, affirming the impact of IOD on regional climatic conditions. This was further reinforced by regression analyses, revealing the extent to which temperature variations could be attributed to changes in IOD. Northeast and Northwest of China, south of India, Kazakhstan, Uzbekistan, and east of Mongolia respond positively, while the Philipines, north-west part of Thailand, northern part of Vietnam, and Papua New Guinea respond negatively to IOD change or signal.
 
 ### Summary 
-Provide short summary of what you learned from your analysis of your data (both scientific and technical), what you would do next to advance this analysis, and any challenges or issues you encountered/overcame.
+We saw from the analysis that the Indian Ocean Dipole plays a crucial role in influencing temperature patterns across Asia. Using data analysis, visualization, and statistical testing, we saw how differently it affects temperature across Asia. In the future, this work can be expanded by including more variables, such as precipitation patterns and their interaction with IOD, as well as ENSO and how IOD and ENSO together influence both temperature and rainfall in Aisa. This will give us a more holistic understanding of the regional climate system.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+I faced many challenges in dealing with these datasets because the temperature dataset and the SST dataset from NOAA uses different time index which made it challenging for me to subset by common time index (especially, when calculating composites). Further, Dask XArray was also a bit challenging as sometimes due to a lack of my klnowledge of it, my code took forever to execute. But, at the end, everything worked and I learned a lot and can't wait to move ahead and use more sophisticated statical analyses and also ML and DL models with these data to more thoroughly understand how IOD plays a role in Asia. I also plan to include atmospheric analysis or understanding of climate dynamics in this region to conduct a more thorough research coupled with quantitative analysis. 
 
 
 <script>
