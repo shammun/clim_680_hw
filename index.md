@@ -73,7 +73,7 @@ This is normally the summer season and here, I have investigated whether tempera
     Toggle between image and code
 </button>
 <!-- Image -->
-<img src="average_temp_JJAS_over_years.png" id="image3" style="display:block;">
+<img src="average_temp_JJAS_over_years.png" id="image4" style="display:block;">
 
 Now, let's have a look at JJAS temperature anomaly over this period.
 
