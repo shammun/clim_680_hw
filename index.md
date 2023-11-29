@@ -1,6 +1,6 @@
 # The Relationship between Indian Ocean Dipole (IOD) and Temperature in Asia 
 > **Author**: Shammunul Islam \
-> **Course**: Climate Data (CLIM680) (Fall 2023), AOES, George Mason University
+> **Course**: Climate Data (CLIM680) (Fall 2023), AOES, George Mason University \
 > **Contact**: [sislam27@gmu.edu](mailto:sislam27@gmu.edu)
 
 ### Introduction 
