@@ -749,7 +749,7 @@ plt.show()
 
 Now, we will look at temperature anomalies for different phases of IOD that we just computed. Note that, for the temperature dataset, all the time values are reported for the last day of a month while for sea surface temperature (and so for IOD), the data is reported on the first day of every month. As the time coordinates are close but not exact for temperature data and SST data (IOD phase data), we will have to use the `sel` method with the `method='nearest'` parameter to select the nearest available time points. The composite is shown below and you can find all the code for it as well.
 
-From the figure below, we can see that China has negative temperature anomaly when the IOD is positive and positive temperature anomaly when the IOD is negative. We can also observe that in Kazakhstan, there is positive response to temperature that is with the increase of IOD or SST, the temperature (anomaly) increases and with decreasing SST, temperature there decreases.
+From the figure below, we can see that China has negative temperature anomaly when the IOD is positive and positive temperature anomaly when the IOD is negative. We can also observe that in Kazakhstan, there is positive response to temperature that is with the increase of IOD or SST, the temperature (anomaly) increases and with decreasing SST, temperature there decreases [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 8 -->
 <button onclick="toggleVisibility('image8', 'code8')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -848,7 +848,7 @@ plt.show()
   </code>
 </pre>
 
-For convenience, we can also look at how different is positive or negative phase compared to neutral phase for temperature. This is also in accordance with the composite plot we have just seen.
+For convenience, we can also look at how different is positive or negative phase compared to neutral phase for temperature. This is also in accordance with the composite plot we have just seen [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 9 -->
 <button onclick="toggleVisibility('image9', 'code9')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -945,7 +945,7 @@ Now, we will check whether the mean difference between Positive IOD and Neutral 
 
 We will test the hypothesis using a two-sided test, based on the Student's t-Test, for the null hypothesis that 2 independent samples have identical average (expected) values. This test assumes that the populations have identical variances by default.
 
-The following plot (and the accompanying code) shows the locations where the value of t-Test is statistically significant or where P-value is less than 0.05.
+The following plot (and the accompanying code) shows the locations where the value of t-Test is statistically significant or where P-value is less than 0.05 [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 10 -->
 <button onclick="toggleVisibility('image10', 'code10')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -1040,7 +1040,7 @@ plt.savefig('stats_ttest.png')
   </code>
 </pre>
 
-For all the points or locations where the mean temperature during positive IOD is significantly different than neutral phase of IOD is shown with dots. Now, we will look at a single such point, here a point at 75 degree East and 22.5 degree North. We will now visually inspect how IOD and temperature anomaly at this point move together over time.
+For all the points or locations where the mean temperature during positive IOD is significantly different than neutral phase of IOD is shown with dots. Now, we will look at a single such point, here a point at 75 degree East and 22.5 degree North. We will now visually inspect how IOD and temperature anomaly at this point move together over time [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 11 -->
 <button onclick="toggleVisibility('image11', 'code11')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -1169,7 +1169,7 @@ plt.show()
 
 From the above map, we can see that Northeast and Northwest of China, south of India, Kazakhstan, Uzbekistan and East of Mongolia have high positive correlation coefficient value with DMI, that means as positive anomaly increased as defined by DMI, the temperature in these areas also increased simultaneouly. Similarly, as temperature anomaly decreases or DMI increases, the temperature also decreases. We can also observe that for Philipines, and Papua New Guinea, the correlation coefficient is negative that is if IOD goes up, temperature goes down and if IOD goes down, temperature goes up in these areas.
 
-Now, we can check the statistical significance of this correlation.
+Now, we can check the statistical significance of this correlation [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 13 -->
 <button onclick="toggleVisibility('image13', 'code13')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -1299,7 +1299,7 @@ We see that in southern India, Kazakhstan, south-eastern and south-western part 
 
 #### Regression analysis
 
-In this part, I will take temperature anomaly over Asia is explained by IOD. So, we will regress DMI Index on temperature anomaly and see if the variation in temperature anomaly can be explained by DMI. We will also look at which areas or countries have clear signal from DMI as indicated by statistically significant p-value or a p-value less than 0.05. We will also see if the pattern of correlation between DMI and temperature anomaly is observed for regression coefficient. It is usual to expect to have similar pattern.
+In this part, I will take temperature anomaly over Asia is explained by IOD. So, we will regress DMI Index on temperature anomaly and see if the variation in temperature anomaly can be explained by DMI. We will also look at which areas or countries have clear signal from DMI as indicated by statistically significant p-value or a p-value less than 0.05. We will also see if the pattern of correlation between DMI and temperature anomaly is observed for regression coefficient. It is usual to expect to have similar pattern [Notebook](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb).
 
 <!-- Toggle Button for Image 14 -->
 <button onclick="toggleVisibility('image14', 'code14')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
