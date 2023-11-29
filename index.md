@@ -444,7 +444,7 @@ Now, let's have a look at the climatology of temperature in Asia [Notebook2](htt
 <img src="climatological_map.png" id="image6" style="display:block;">
 
 <!-- Code Block for Image 6 (initially hidden) -->
-<pre id="code6" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code6" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
     import numpy as np
 import xarray as xr
@@ -1049,7 +1049,7 @@ For all the points or locations where the mean temperature during positive IOD i
 <!-- Code Block for Image 11 (initially hidden) -->
 <pre id="code11" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
-    pt=ds_anoms.sel(lat=22.5,lon=75,method='nearest')
+pt=ds_anoms.sel(lat=22.5,lon=75,method='nearest')
 
 fig, ax1 = plt.subplots()
 
@@ -1081,7 +1081,7 @@ Now, we will look at the correlation between DMI (IOD) and temperature anomalies
 <img src="correlation_DMI_temp_anom.png" id="image12" style="display:block;">
 
 <!-- Code Block for Image 12 (initially hidden) -->
-<pre id="code12" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;>
+<pre id="code12" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
 # Resample ds_anoms to the first day of each month
 ds_anoms_resampled = ds_anoms.resample(time='MS').mean()  # 'MS' stands for 'Month Start'
