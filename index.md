@@ -1,4 +1,4 @@
-# Impact of Indian Ocean Dipole on Temperature in Asia 
+# The Effect of Indian Ocean Dipole on Temperature in Asia 
 
 ### Introduction 
 
@@ -56,6 +56,16 @@ First of all, air temperature (in Celsius) is plotted over Asia using different 
 <!-- Image -->
 <img src="air_temp_1961.png" id="image1" style="display:block;">
 
+Now, let's see if the temperature changed in 2015 compared to 1961 by plotting the temperature anomaly.
+
+<button onclick="toggleVisibility('image2', 'code2')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
+    Toggle between image and code
+</button>
+<!-- Image -->
+<img src="air_temp_anomaly_2015_1961.png" id="image2" style="display:block;">
+
+
+
 
 <video width="820" height="640" controls>
   <source src="IOD_Animation_2_Smaller_Size.mp4" type="video/mp4">
@@ -79,19 +89,34 @@ First of all, air temperature (in Celsius) is plotted over Asia using different 
 
 
 
-<!-- Toggle Button -->
-<button onclick="toggleVisibility('image1', 'code1')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
-    Toggle between image and code
-</button>
+
+
+
+
+
+
+
+
+
+### Results 
+What does your analysis show that is scientifically interesting? What have you discovered?  
+
+### Summary 
+Provide short summary of what you learned from your analysis of your data (both scientific and technical), what you would do next to advance this analysis, and any challenges or issues you encountered/overcame.
+
+
+
+
+
 
 
 
 
 <!-- Code Block (initially hidden) -->
-<pre id="code1" style="display:none;">
+<pre id="code1" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
   <code>
     // Your code here
-    import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import numpy as np
 from cartopy.util import add_cyclic_point
@@ -151,12 +176,83 @@ plt.show()
   </code>
 </pre>
 
+<pre id="code2" style="display:none; background-color: #f7f7f7; border-left: 5px solid #0066cc; padding: 10px; margin: 10px 0; overflow: auto; font-family: 'Courier New', Courier, monospace; font-size: 14px; line-height: 1.6;">
+  <code>
+import matplotlib.pyplot as plt
+import cartopy.crs as ccrs
+import numpy as np
+from cartopy.util import add_cyclic_point
+import cartopy.mpl.ticker as cticker
+import cartopy.feature as cfeature
 
-### Results 
-What does your analysis show that is scientifically interesting? What have you discovered?  
+fname = 'APHRO_MA_TAVE_025deg_V1808.2015.nc.nc'
+ds_2015 = xr.open_dataset(fname)
+ds_mean_2015=ds_2015.mean(dim='time')
+fname = 'APHRO_MA_TAVE_025deg_V1808.1961.nc.nc'
+ds_1961 = xr.open_dataset(fname)
+ds_mean_1961=ds_1961.mean(dim='time')
+anomaly = ds_mean_2015 - ds_mean_1961
 
-### Summary 
-Provide short summary of what you learned from your analysis of your data (both scientific and technical), what you would do next to advance this analysis, and any challenges or issues you encountered/overcame.
+# Make the figure larger
+fig = plt.figure(figsize=(11, 8.5))
+
+# Set the axes using the specified map projection
+ax = plt.axes(projection=ccrs.PlateCarree(), position=[0.05, 0.15, 0.9, 0.7])  # Adjust the position of the map
+
+# Add cyclic point to data
+data = anomaly['tave']
+data, lons = add_cyclic_point(data, coord=ds_2015['lon'])
+
+# Define levels for finer intervals, considering a more detailed range
+min_val = np.nanmin(data)
+max_val = np.nanmax(data)
+level_interval = 0.5  # Smaller interval for more granularity
+levels = np.arange(min_val, max_val + level_interval, level_interval)
+
+# Make a filled contour plot with specified levels
+cs = ax.contourf(lons, ds_2015['lat'], data, levels=levels,
+                 transform=ccrs.PlateCarree(), cmap='coolwarm', extend='both')
+
+# Add coastlines
+ax.coastlines()
+# Country boundaries
+ax.add_feature(cfeature.BORDERS, edgecolor='black')
+
+# Define the xticks for longitude
+lon_range = np.arange(np.floor(ds_2015['lon'].min()), np.ceil(ds_2015['lon'].max()) + 1, 20)
+ax.set_xticks(lon_range, crs=ccrs.PlateCarree())
+lon_formatter = cticker.LongitudeFormatter()
+ax.xaxis.set_major_formatter(lon_formatter)
+
+# Define the yticks for latitude
+lat_range = np.arange(np.floor(ds_2015['lat'].min()), np.ceil(ds_2015['lat'].max()) + 1, 10)
+ax.set_yticks(lat_range, crs=ccrs.PlateCarree())
+lat_formatter = cticker.LatitudeFormatter()
+ax.yaxis.set_major_formatter(lat_formatter) 
+
+# Define the longitude and latitude range
+ax.set_extent([ds_2015['lon'].min(), ds_2015['lon'].max(), ds_2015['lat'].min(), ds_2015['lat'].max()])
+
+# Add title with adjusted position
+plt.title("Air temperature anomaly between 2015 and 1961 (Celsius)", pad=20)
+
+# Reposition the colorbar to increase the gap from the map
+cbar_ax = fig.add_axes([0.15, 0.07, 0.7, 0.03])  # Adjusted to increase the gap
+cbar = plt.colorbar(cs, cax=cbar_ax, orientation='horizontal', label='Air Temperature difference (Celsius)')
+
+plt.savefig('air_temp_anomaly_2015_1961.png', dpi=300, bbox_inches='tight')
+plt.show()
+  </code>
+</pre>
+
+
+
+
+
+
+
+
+
 
 <script>
   function toggleVisibility(imageId, codeId) {
