@@ -62,7 +62,10 @@ Description of each of your analyses along with a link to your notebook for each
 
 
 <!-- Toggle Button -->
-<button onclick="toggleVisibility('image1', 'code1')">Toggle between image and code</button>
+<button onclick="toggleVisibility('image1', 'code1')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
+    Toggle between image and code
+</button>
+
 
 <!-- Image -->
 <img src="1.png" id="image1" style="display:block;">
