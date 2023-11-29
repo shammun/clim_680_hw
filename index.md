@@ -48,7 +48,7 @@ This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [thi
 ### Code description or data analysis
 
 #### Temperature analysis
-First of all, air temperature (in Celsius) is plotted over Asia using different Python libraries, including Cartopy and Matplotlib. Detailed step-by-step methods with code can be found in this [notebook](HW1_New.ipynb). But, the code for each of the figures displayed here can also be seen by clicking on the button placed above each figure. 
+First of all, air temperature (in Celsius) is plotted over Asia using different Python libraries, including Cartopy and Matplotlib. Detailed step-by-step methods with code can be found in this [notebook](https://github.com/shammun/clim_680_hw/blob/main/HW1_New.ipynb). But, the code for each of the figures displayed here can also be seen by clicking on the button placed above each figure. 
 
 <!-- Toggle Button -->
 <button onclick="toggleVisibility('image1', 'code1')" style="background-color: #0066cc; color: white; border: none; padding: 10px 20px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border-radius: 8px;">
@@ -357,7 +357,9 @@ plt.show()
 
 We see that it changed over time but it is not clear whether it has a consistent increase or decrease or no change.
 
+
 Now, let's have a look at standard deviation of temperature over Asia to see how it varies in different areas of Asia.
+
 <!-- Toggle Button for Image 5 -->
 <button onclick="toggleVisibility('image5', 'code5')" style="...">
     Toggle between image and code
