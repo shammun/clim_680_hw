@@ -939,8 +939,9 @@ Now, we will check whether the mean difference between Positive IOD and Neutral 
 
 ##### Null Hypothesis
 
-**Null Hypothesis (H0)**: Differences between the mean temperature in positive IOD and the mean temperature in neutral IOD is zero
-**Alternative Hypothesis (H1)**: There is a difference between these two temperatures.
+  - **Null Hypothesis (H0)**: Differences between the mean temperature in positive IOD and the mean temperature in neutral IOD is zero
+
+  - **Alternative Hypothesis (H1)**: There is a difference between these two temperatures.
 
 We will test the hypothesis using a two-sided test based on the Student's t-Test, for the null hypothesis that two independent samples have identical average (expected) values. This test assumes that the populations have identical variances by default.
 
