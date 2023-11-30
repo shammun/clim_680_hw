@@ -5,9 +5,9 @@
 
 ### Introduction 
 
-Due to climate variability and climate change, the world is continuously affected by different extreme events, especially associated with high temperature. Asia is affected by many calamities caused by high temperature driven events. Indian Ocean plays a critical role in the atmospheric dynamics of this region, particularly, Indian Ocean Dipole (IOD), an oscillation of temperature in Indian Ocean equivalent to ENSO in central and eastern tropical Pacific Ocean. In this project, it is investigated whether there is any relationship between different phases of IOD, which areas have these relationships and whether these are statistically significant.
+Due to climate variability and climate change, the world is continuously affected by different extreme events, especially associated with high temperature. Asia is affected by many calamities caused by high temperature driven events. Indian Ocean plays a critical role in the atmospheric dynamics of this region, particularly, Indian Ocean Dipole (IOD), an oscillation of temperature in Indian Ocean equivalent to ENSO in central and eastern tropical Pacific Ocean. In this project, it is investigated whether there is any relationship between different phases of IOD and temperature, if there is, which areas have these relationships, and whether these are statistically significant. Along with this, it was also investigated how the temperature in Aisa reponds to different phases of IOD.
 
-For doing this study, APHRODITE Water Resources project data for daily mean temperature is chosen as they have daily temperature data from 1962 upto 2015 in a gridded format with a high spatial resolution of 0.5 degree by 0.25 degree. For sea surface temperature, NOAA OISST V2 SST data is used as it has good spatial and temporal coverage.
+For doing this study, APHRODITE Water Resources project data for daily mean temperature is chosen as they have daily temperature data from 1962 upto 2015 in a gridded format with a high spatial resolution of 0.5 degree by 0.25 degree. For sea surface temperature, NOAA OISST V2 SST data is used as it has 1 degree by 1 degree spatial resolution and temporal coverage starting from the end of 1981..
 
 ### Data 
 
@@ -27,7 +27,7 @@ Daily mean temperature values are provided by their AphroTemp_V1808 at 0.50 and 
    * Temporal resolution   :  Daily
 
 - Units
-   * Daily mean temperature :  degC
+   * Daily mean temperature :  degree Celsius (degC)
 
 - Missing Code
 
@@ -44,7 +44,7 @@ This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [thi
    * 89.5S - 89.5N, 0.5E to 359.5E
 
 - Units
-   * Daily mean temperature :  degC
+   * Daily mean temperature :  degree Celsius (degC)
      
 - Missing Code
    * Missing data code: -9.96921e+36f.
