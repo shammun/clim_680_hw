@@ -113,8 +113,8 @@ This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [thi
   ## 📚 Documentation
   For more detailed information about this class project, refer to the following resources:
 
-    **Notebook Descriptions:** Each notebook contains details on what to do and how to do.
-    **GitHub Page**: For a more interactive experience and ready-made visualization.
+    > Notebook Descriptions: Each notebook contains details on what to do and how to do.
+    > GitHub Page: For a more interactive experience and ready-made visualization.
 
 ## 📩 Contact
   Shammunul Islam - [sha_is13@yahoo.com, shais13irs@gmail.com, si2267@gmu.edu]
