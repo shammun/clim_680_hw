@@ -111,7 +111,7 @@ This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [thi
      Visit [https://shammun.github.io/clim_680_hw/] to explore the GitHub Page associated with this project.
 
   ## 📚 Documentation
-    For more detailed information about this class project, refer to the following resources:
+  For more detailed information about this class project, refer to the following resources:
 
     * Notebook Descriptions: Each notebook contains details on what to do and how to do.
     * GitHub Page: For a more interactive experience and ready-made visualization.
