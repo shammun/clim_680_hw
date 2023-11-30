@@ -1,4 +1,4 @@
-# The Effect of Indian Ocean Dipole 🌊 on Temperature ☀️ in Asia 
+# The Relationship between Indian Ocean Dipole (IOD) 🌊 and Temperature ☀️ in Asia
 > [Github Page](https://shammun.github.io/clim_680_hw/)
 
 **Shammunul Islam (sislam27@mason.edu)** 👋
