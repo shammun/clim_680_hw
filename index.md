@@ -28,25 +28,26 @@ Daily mean temperature values are provided by their AphroTemp_V1808 at 0.50 and 
 
 - Units
    * Daily mean temperature :  degC
-   * Ratio of 0.05 grid box containing station(s) :  %
 
 - Missing Code
 
    * Daily mean temperature :  -99.9
-   * Ratio of 0.05 grid box containing station(s) :  -99.9
 
 ##### NOAA OI SST V2 High Resolution Dataset
 
-This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [this link](https://psl.noaa.gov/data/gridded/data.noaa.oisst.v2.highres.html).
+This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [this link](http://www.emc.ncep.noaa.gov/research/cmb/sst_analysis/). I used monthly mean of sea surface temperature dataset hosted in Hopper.  
 
 - Spatial and Temporal Coverage
 
-   * Daily values from 1981/09 to 2023/11
-   * 0.25 degree latitude x 0.25 degree longitude global grid (1440x720)
-   * 89.875S - 89.875N,0.125E to 359.875E
+   * Monthly values from 1981/12 to 2020/04
+   * 1 degree latitude x 1 degree longitude global grid (360x180)
+   * 89.5S - 89.5N, 0.5E to 359.5E
 
-- Missing Data
-   * Missing data is flagged with a value of -9.96921e+36f.
+- Units
+   * Daily mean temperature :  degC
+     
+- Missing Code
+   * Missing data code: -9.96921e+36f.
 
 ### Code description or data analysis
 
