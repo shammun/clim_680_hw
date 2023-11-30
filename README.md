@@ -126,8 +126,7 @@ This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [thi
 
 ![Screenshot1](regression_temp_anom_DMI.png)
 ![Screenshot2](correlation_IOD_temp_significance.png)
+<br>
 ![Composite anomalies](composite_anomalies_IOD.png)
-<br>
-<br>
 ![JJAS temperature anomaly](jjas_temperature_anomaly.gif)
 
