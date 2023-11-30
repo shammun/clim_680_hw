@@ -11,7 +11,7 @@
 
   There are mainly 3 notebooks [HW1_New.ipynb](https://github.com/shammun/clim_680_hw/blob/main/HW1_New.ipynb), [HW2_New.ipynb](https://github.com/shammun/clim_680_hw/blob/main/HW2_New.ipynb), and [HW3_New.ipynb](https://github.com/shammun/clim_680_hw/blob/main/HW3_New.ipynb) that show you step by step process with Python code on how to analyze temperature and sea surface temperature data using XArray, Dask and many more!! This repository contains a collection of insightful Jupyter Notebooks and a dedicated GitHub Page built in requirement for the class project of 680: Climate Data, a course required for PhD in CLimate Dynamics, at George Mason Universityy.
 
-  One caveat though 🙃, as the data size is huge, you will have to download the data by yourself in your local computer before you can run the code. 
+  One caveat though 🙃, as the data size is huge, I couldn't `git push` these big files and so you will have to download the data by yourself in your local computer before you can run the code. Also when loading data, please modify the data source in the notebooks accordingly.
 
   Ohh, by the way, look at this Github page 📖 [https://shammun.github.io/clim_680_hw/](https://shammun.github.io/clim_680_hw/) associated with the repository that walks you through the codes and that also discusses the results. 
 
@@ -51,9 +51,9 @@ This gridded dataset NOAA OI SST V2 High Resolution Dataset can be found at [thi
 
 - Spatial and Temporal Coverage
 
-   * Daily values from 1981/09 to 2023/11
-   * 0.25 degree latitude x 0.25 degree longitude global grid (1440x720)
-   * 89.875S - 89.875N,0.125E to 359.875E
+   * Monthly values from 1981/12 to 2020/04
+   * 1 degree latitude x 1 degree longitude global grid (360x180)
+   * 89.5S - 89.5N, 0.5E to 359.5E
 
 - Missing Data
    * Missing data is flagged with a value of -9.96921e+36f.
